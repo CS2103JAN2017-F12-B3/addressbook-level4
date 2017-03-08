@@ -1,6 +1,6 @@
 package seedu.address.commons.events.storage;
 
-import seedu.task.commons.events.BaseEvent;
+import seedu.address.commons.events.BaseEvent;
 
 /**
  * Indicates an exception during a file saving

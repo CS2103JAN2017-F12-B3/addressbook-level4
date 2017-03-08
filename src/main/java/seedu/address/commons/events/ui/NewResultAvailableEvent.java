@@ -1,6 +1,6 @@
 package seedu.address.commons.events.ui;
 
-import seedu.task.commons.events.BaseEvent;
+import seedu.address.commons.events.BaseEvent;
 
 /**
  * Indicates that a new result is available.

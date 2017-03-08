@@ -9,12 +9,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.task.commons.core.UnmodifiableObservableList;
-import seedu.task.model.ReadOnlyAddressBook;
-import seedu.task.model.tag.Tag;
-import seedu.task.model.task.Person;
-import seedu.task.model.task.ReadOnlyPerson;
+import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.ReadOnlyPerson;
+import seedu.address.model.tag.Tag;
 
 /**
  * An Immutable AddressBook that is serializable to XML format
