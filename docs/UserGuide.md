@@ -44,18 +44,18 @@ A command guide will be shown in the window
 ### 2.2. Adding a task: `add`
 
 Adds a task to the task manager<br>
-Format: `add TASK by DEADLINE`
+Format: `add TASK from STARTING TIME by FINISHING TIME`
 
 > Tasks can have any number of tags (including 0)
 
 Examples:
 
-* `add submit report by Friday #academic`
-* `add read Harry Potter by Saturday #personal`
+* `add t/submit report by f/Friday #academic`
+* `add t/read Harry Potter from s/Monday by f/Saturday #personal`
 
 ### 2.3. Listing all tasks : `list`
 
-Shows a list of all tasks in the task manager.<br>
+Shows a list of all currently ongoing tasks in the task manager.<br>
 Format: `list`
 A list of tasks with index number will be shown in the column
 
@@ -76,9 +76,13 @@ Examples:
 ### 2.5. Editing a task : `edit`
 
 Edits an existing task in the task manager.<br>
-The tasks can be edited through the index from a list
-Format: `edit INDEX`
-Follow subsequent instructions to edit the respective items such as timing, tag, etc.
+The tasks can be edited through the index from a list.<br>
+Format: `edit INDEX COMPONENT`
+
+Examples:
+
+* `edit 3 f/Saturday`<br>
+  Changes the finishing time of task 3 to Saturday
 
 ### 2.6. Finding all tasks containing any keyword in their task description: `find`
 
@@ -105,7 +109,7 @@ Format: `clear`
 
 ### 2.9. Viewing history of task : `history`
 
-A list of history of tasks will be shown in the column sorted in reverse-chronological order
+A list of history of tasks that have been completed will be shown in the column sorted in reverse-chronological order
 Format: `history`
 
 ### 2.10. Exiting the program : `exit`
@@ -126,30 +130,18 @@ There is no need to save manually.
 
 ## 4. Command Summary
 
-* **Help** : `help` <br>
-
-* **Add**  `add TASK` <br>
-           `add TASK by DEADLINE` <br>
-  e.g. `add submit report by Friday`
-
-* **List** : `list` <br>
-
-* **Select** : `select INDEX` <br>
-  e.g. `select 3`
-
-* **Edit**  `edit INDEX` <br>
-  e.g. `edit 3`
-
-* **Find** : `find KEYWORD` <br>
-  e.g. `find report`
-  e.g. `find Friday`
-
-* **Delete** : `delete INDEX` <br>
-  e.g. `delete 3`
-
-* **Clear** : `clear` <br>
-
-* **History** : `history` <br>
-
-* **Exit** : `exit` <br>
+Command | Syntax | Example
+------- | ------ | -------
+Help    | help
+Add     | add TASK                                      | add t/submit report by f/Friday
+        | add TASK by FINISHING TIME                    | 
+        | add TASK from STARTING TIME by FINISHING TIME |
+List    | list
+Select  | select INDEX                    | select 3
+Edit    | edit INDEX COMPONENT            | edit 3 f/Saturday
+Find    | find KEYWORD                    | find report
+Delete  | delete INDEX                    | delete 3
+Clear   | clear
+History | history
+Exit    | exit
 <br>
