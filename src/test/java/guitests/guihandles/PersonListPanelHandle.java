@@ -13,9 +13,9 @@ import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import seedu.address.TestApp;
-import seedu.address.model.task.Person;
-import seedu.address.model.task.ReadOnlyPerson;
 import seedu.address.testutil.TestUtil;
+import seedu.task.model.task.Person;
+import seedu.task.model.task.ReadOnlyPerson;
 
 /**
  * Provides a handle for the panel containing the person list.

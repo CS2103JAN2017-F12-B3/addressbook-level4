@@ -1,6 +1,6 @@
 package seedu.address.logic.commands;
 
-import seedu.address.model.AddressBook;
+import seedu.task.model.AddressBook;
 
 /**
  * Clears the address book.

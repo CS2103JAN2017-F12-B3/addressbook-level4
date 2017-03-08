@@ -10,10 +10,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
-import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
 import seedu.address.commons.util.FxViewUtil;
-import seedu.address.model.task.ReadOnlyPerson;
+import seedu.task.commons.core.LogsCenter;
+import seedu.task.model.task.ReadOnlyPerson;
 
 /**
  * Panel containing the list of persons.

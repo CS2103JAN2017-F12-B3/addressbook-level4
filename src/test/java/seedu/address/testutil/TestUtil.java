@@ -29,16 +29,16 @@ import seedu.address.TestApp;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.XmlUtil;
-import seedu.address.model.TaskManager;
-import seedu.address.model.tag.Tag;
-import seedu.address.model.tag.UniqueTagList;
-import seedu.address.model.task.Address;
-import seedu.address.model.task.Email;
-import seedu.address.model.task.Name;
-import seedu.address.model.task.Task;
-import seedu.address.model.task.Phone;
-import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.storage.XmlSerializableTaskManager;
+import seedu.task.model.TaskManager;
+import seedu.task.model.tag.Tag;
+import seedu.task.model.tag.UniqueTagList;
+import seedu.task.model.task.Deadline;
+import seedu.task.model.task.Description;
+import seedu.task.model.task.ReadOnlyTask;
+import seedu.task.model.task.StartDate;
+import seedu.task.model.task.Task;
+import seedu.task.model.task.Title;
+import seedu.task.storage.XmlSerializableTaskManager;
 
 /**
  * A utility class for test cases.
@@ -63,27 +63,27 @@ public class TestUtil {
             if (actualException.getClass().isAssignableFrom(expected)) {
                 return;
             }
-            String message = String.format("Expected thrown: %s, actual: %s", expected.getName(),
-                    actualException.getClass().getName());
+            String message = String.format("Expected thrown: %s, actual: %s", expected.getTitle(),
+                    actualException.getClass().getTitle());
             throw new AssertionFailedError(message);
         }
         throw new AssertionFailedError(
-                String.format("Expected %s to be thrown, but nothing was thrown.", expected.getName()));
+                String.format("Expected %s to be thrown, but nothing was thrown.", expected.getTitle()));
     }
 
     private static Task[] getSampleTaskData() {
         try {
             //CHECKSTYLE.OFF: LineLength
             return new Task[]{
-                new Task(new Name("Ali Muster"), new Phone("9482424"), new Email("hans@google.com"), new Address("4th street"), new UniqueTagList()),
-                new Task(new Name("Boris Mueller"), new Phone("87249245"), new Email("ruth@google.com"), new Address("81th street"), new UniqueTagList()),
-                new Task(new Name("Carl Kurz"), new Phone("95352563"), new Email("heinz@yahoo.com"), new Address("wall street"), new UniqueTagList()),
-                new Task(new Name("Daniel Meier"), new Phone("87652533"), new Email("cornelia@google.com"), new Address("10th street"), new UniqueTagList()),
-                new Task(new Name("Elle Meyer"), new Phone("9482224"), new Email("werner@gmail.com"), new Address("michegan ave"), new UniqueTagList()),
-                new Task(new Name("Fiona Kunz"), new Phone("9482427"), new Email("lydia@gmail.com"), new Address("little tokyo"), new UniqueTagList()),
-                new Task(new Name("George Best"), new Phone("9482442"), new Email("anna@google.com"), new Address("4th street"), new UniqueTagList()),
-                new Task(new Name("Hoon Meier"), new Phone("8482424"), new Email("stefan@mail.com"), new Address("little india"), new UniqueTagList()),
-                new Task(new Name("Ida Mueller"), new Phone("8482131"), new Email("hans@google.com"), new Address("chicago ave"), new UniqueTagList())
+                new Task(new Title("Ali Muster"), new Deadline("9482424"), new StartDate("hans@google.com"), new Description("4th street"), new UniqueTagList()),
+                new Task(new Title("Boris Mueller"), new Deadline("87249245"), new StartDate("ruth@google.com"), new Description("81th street"), new UniqueTagList()),
+                new Task(new Title("Carl Kurz"), new Deadline("95352563"), new StartDate("heinz@yahoo.com"), new Description("wall street"), new UniqueTagList()),
+                new Task(new Title("Daniel Meier"), new Deadline("87652533"), new StartDate("cornelia@google.com"), new Description("10th street"), new UniqueTagList()),
+                new Task(new Title("Elle Meyer"), new Deadline("9482224"), new StartDate("werner@gmail.com"), new Description("michegan ave"), new UniqueTagList()),
+                new Task(new Title("Fiona Kunz"), new Deadline("9482427"), new StartDate("lydia@gmail.com"), new Description("little tokyo"), new UniqueTagList()),
+                new Task(new Title("George Best"), new Deadline("9482442"), new StartDate("anna@google.com"), new Description("4th street"), new UniqueTagList()),
+                new Task(new Title("Hoon Meier"), new Deadline("8482424"), new StartDate("stefan@mail.com"), new Description("little india"), new UniqueTagList()),
+                new Task(new Title("Ida Mueller"), new Deadline("8482131"), new StartDate("hans@google.com"), new Description("chicago ave"), new UniqueTagList())
             };
             //CHECKSTYLE.ON: LineLength
         } catch (IllegalValueException e) {
@@ -114,16 +114,16 @@ public class TestUtil {
     /**
      * Appends the file name to the sandbox folder path.
      * Creates the sandbox folder if it doesn't exist.
-     * @param fileName
+     * @param fileTitle
      * @return
      */
-    public static String getFilePathInSandboxFolder(String fileName) {
+    public static String getFilePathInSandboxFolder(String fileTitle) {
         try {
             FileUtil.createDirs(new File(SANDBOX_FOLDER));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return SANDBOX_FOLDER + fileName;
+        return SANDBOX_FOLDER + fileTitle;
     }
 
     public static void createDataFileWithSampleData(String filePath) {
@@ -175,10 +175,10 @@ public class TestUtil {
         return headlessProperty != null && headlessProperty.equals("true");
     }
 
-    public static void captureScreenShot(String fileName) {
+    public static void captureScreenShot(String fileTitle) {
         File file = GuiTest.captureScreenshot();
         try {
-            Files.copy(file, new File(fileName + ".png"));
+            Files.copy(file, new File(fileTitle + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -218,15 +218,15 @@ public class TestUtil {
      *
      * Caveat: only find method declared in the current Class, not inherited from supertypes
      */
-    public static Method getPrivateMethod(Class<?> objectClass, String methodName) throws NoSuchMethodException {
-        Method method = objectClass.getDeclaredMethod(methodName);
+    public static Method getPrivateMethod(Class<?> objectClass, String methodTitle) throws NoSuchMethodException {
+        Method method = objectClass.getDeclaredMethod(methodTitle);
         method.setAccessible(true);
         return method;
     }
 
-    public static void renameFile(File file, String newFileName) {
+    public static void renameFile(File file, String newFileTitle) {
         try {
-            Files.copy(file, new File(newFileName));
+            Files.copy(file, new File(newFileTitle));
         } catch (IOException e1) {
             e1.printStackTrace();
         }

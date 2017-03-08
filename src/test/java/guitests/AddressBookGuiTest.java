@@ -22,12 +22,12 @@ import guitests.guihandles.ResultDisplayHandle;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import seedu.address.TestApp;
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.events.BaseEvent;
-import seedu.address.model.AddressBook;
-import seedu.address.model.task.ReadOnlyPerson;
 import seedu.address.testutil.TestUtil;
-import seedu.address.testutil.TypicalTestPersons;
+import seedu.task.commons.core.EventsCenter;
+import seedu.task.commons.events.BaseEvent;
+import seedu.task.model.AddressBook;
+import seedu.task.model.task.ReadOnlyPerson;
+import seedu.task.testutil.TypicalTestPersons;
 
 /**
  * A GUI Test class for AddressBook.

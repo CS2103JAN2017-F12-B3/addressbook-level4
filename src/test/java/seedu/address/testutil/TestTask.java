@@ -1,21 +1,21 @@
 package seedu.address.testutil;
 
-import seedu.address.model.tag.UniqueTagList;
-import seedu.address.model.task.Address;
-import seedu.address.model.task.Email;
-import seedu.address.model.task.Name;
-import seedu.address.model.task.Phone;
-import seedu.address.model.task.ReadOnlyTask;
+import seedu.task.model.tag.UniqueTagList;
+import seedu.task.model.task.Deadline;
+import seedu.task.model.task.Description;
+import seedu.task.model.task.ReadOnlyTask;
+import seedu.task.model.task.StartDate;
+import seedu.task.model.task.Title;
 
 /**
  * A mutable task object. For testing only.
  */
 public class TestTask implements ReadOnlyTask {
 
-    private Name name;
-    private Address address;
-    private Email email;
-    private Phone phone;
+    private Title name;
+    private Description address;
+    private StartDate email;
+    private Deadline phone;
     private UniqueTagList tags;
 
     public TestTask() {
@@ -26,26 +26,26 @@ public class TestTask implements ReadOnlyTask {
      * Creates a copy of {@code taskToCopy}.
      */
     public TestTask(TestTask taskToCopy) {
-        this.name = taskToCopy.getName();
-        this.phone = taskToCopy.getPhone();
-        this.email = taskToCopy.getEmail();
-        this.address = taskToCopy.getAddress();
+        this.name = taskToCopy.getTitle();
+        this.phone = taskToCopy.getDeadline();
+        this.email = taskToCopy.getStartDate();
+        this.address = taskToCopy.getDescription();
         this.tags = taskToCopy.getTags();
     }
 
-    public void setName(Name name) {
+    public void setTitle(Title name) {
         this.name = name;
     }
 
-    public void setAddress(Address address) {
+    public void setDescription(Description address) {
         this.address = address;
     }
 
-    public void setEmail(Email email) {
+    public void setStartDate(StartDate email) {
         this.email = email;
     }
 
-    public void setPhone(Phone phone) {
+    public void setDeadline(Deadline phone) {
         this.phone = phone;
     }
 
@@ -54,22 +54,22 @@ public class TestTask implements ReadOnlyTask {
     }
 
     @Override
-    public Name getName() {
+    public Title getTitle() {
         return name;
     }
 
     @Override
-    public Phone getPhone() {
+    public Deadline getDeadline() {
         return phone;
     }
 
     @Override
-    public Email getEmail() {
+    public StartDate getStartDate() {
         return email;
     }
 
     @Override
-    public Address getAddress() {
+    public Description getDescription() {
         return address;
     }
 
@@ -85,10 +85,10 @@ public class TestTask implements ReadOnlyTask {
 
     public String getAddCommand() {
         StringBuilder sb = new StringBuilder();
-        sb.append("add " + this.getName().fullName + " ");
-        sb.append("a/" + this.getAddress().value + " ");
-        sb.append("p/" + this.getPhone().value + " ");
-        sb.append("e/" + this.getEmail().value + " ");
+        sb.append("add " + this.getTitle().fullTitle + " ");
+        sb.append("a/" + this.getDescription().value + " ");
+        sb.append("p/" + this.getDeadline().value + " ");
+        sb.append("e/" + this.getStartDate().value + " ");
         this.getTags().asObservableList().stream().forEach(s -> sb.append("t/" + s.tagName + " "));
         return sb.toString();
     }
