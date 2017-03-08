@@ -12,7 +12,7 @@ import seedu.task.model.tag.UniqueTagList;
 public class Task implements ReadOnlyTask {
 
     private Title title;
-    private Deadline deadline;
+    private EndDate endDate;
     private StartDate startDate;
     private Description description;
 
@@ -21,10 +21,10 @@ public class Task implements ReadOnlyTask {
     /**
      * Every field must be present and not null.
      */
-    public Task(Title title, Deadline deadline, StartDate startDate, Description description, UniqueTagList tags) {
-        assert !CollectionUtil.isAnyNull(title, deadline, startDate, description, tags);
+    public Task(Title title, EndDate endDate, StartDate startDate, Description description, UniqueTagList tags) {
+        assert !CollectionUtil.isAnyNull(title, endDate, startDate, description, tags);
         this.title = title;
-        this.deadline = deadline;
+        this.endDate = endDate;
         this.startDate = startDate;
         this.description = description;
         this.tags = new UniqueTagList(tags); // protect internal tags from changes in the arg list
@@ -34,7 +34,7 @@ public class Task implements ReadOnlyTask {
      * Creates a copy of the given ReadOnlyTask.
      */
     public Task(ReadOnlyTask source) {
-        this(source.getTitle(), source.getDeadline(), source.getStartDate(), source.getDescription(), source.getTags());
+        this(source.getTitle(), source.getEndDate(), source.getStartDate(), source.getDescription(), source.getTags());
     }
 
     public void setTitle(Title title) {
@@ -47,14 +47,14 @@ public class Task implements ReadOnlyTask {
         return title;
     }
 
-    public void setDeadline(Deadline deadline) {
-        assert deadline != null;
-        this.deadline = deadline;
+    public void setEndDate(EndDate endDate) {
+        assert endDate != null;
+        this.endDate = endDate;
     }
 
     @Override
-    public Deadline getDeadline() {
-        return deadline;
+    public EndDate getEndDate() {
+        return endDate;
     }
 
     public void setStartDate(StartDate startDate) {
@@ -96,7 +96,7 @@ public class Task implements ReadOnlyTask {
         assert replacement != null;
 
         this.setTitle(replacement.getTitle());
-        this.setDeadline(replacement.getDeadline());
+        this.setEndDate(replacement.getEndDate());
         this.setStartDate(replacement.getStartDate());
         this.setDescription(replacement.getDescription());
         this.setTags(replacement.getTags());
@@ -112,7 +112,7 @@ public class Task implements ReadOnlyTask {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, deadline, startDate, description, tags);
+        return Objects.hash(title, endDate, startDate, description, tags);
     }
 
     @Override

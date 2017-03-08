@@ -6,7 +6,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
  * Represents a Person's deadline number in the task manager.
  * Guarantees: immutable; is valid as declared in {@link #isValidDeadline(String)}
  */
-public class Deadline {
+public class EndDate {
 
     public static final String MESSAGE_DEADLINE_CONSTRAINTS = "Task deadline should be of dd/mm/yyyy format";
     public static final String DEADLINE_VALIDATION_REGEX = "([0-9]{2})\\([0-9]{2})\\([0-9]{4})";
@@ -18,7 +18,7 @@ public class Deadline {
      *
      * @throws IllegalValueException if given deadline string is invalid.
      */
-    public Deadline(String deadline) throws IllegalValueException {
+    public EndDate(String deadline) throws IllegalValueException {
         assert deadline != null;
         String trimmedDeadline = deadline.trim();
         if (!isValidDeadline(trimmedDeadline)) {
@@ -42,8 +42,8 @@ public class Deadline {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Deadline // instanceof handles nulls
-                && this.value.equals(((Deadline) other).value)); // state check
+                || (other instanceof EndDate // instanceof handles nulls
+                && this.value.equals(((EndDate) other).value)); // state check
     }
 
     @Override

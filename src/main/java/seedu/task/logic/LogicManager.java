@@ -3,15 +3,15 @@ package seedu.task.logic;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
-import seedu.address.commons.core.ComponentManager;
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.Parser;
-import seedu.address.model.Model;
-import seedu.address.model.person.ReadOnlyPerson;
-import seedu.address.storage.Storage;
+import seedu.task.commons.core.ComponentManager;
+import seedu.task.commons.core.LogsCenter;
+import seedu.task.logic.commands.Command;
+import seedu.task.logic.commands.CommandResult;
+import seedu.task.logic.commands.exceptions.CommandException;
+import seedu.task.logic.parser.Parser;
+import seedu.task.model.Model;
+import seedu.task.model.task.ReadOnlyTask;
+import seedu.task.storage.Storage;
 
 /**
  * The main LogicManager of the app.
@@ -36,7 +36,7 @@ public class LogicManager extends ComponentManager implements Logic {
     }
 
     @Override
-    public ObservableList<ReadOnlyPerson> getFilteredTaskList() {
+    public ObservableList<ReadOnlyTask> getFilteredTaskList() {
         return model.getFilteredTaskList();
     }
 }
