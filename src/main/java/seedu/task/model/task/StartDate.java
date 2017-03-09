@@ -11,7 +11,7 @@ public class StartDate {
 
     public static final String MESSAGE_STARTINGTIME_CONSTRAINTS =
             "Task start date should be of dd/mm/yyyy format";
-    public static final String STARTINGTIME_VALIDATION_REGEX = "([0-9]{2})\\([0-9]{2})\\([0-9]{4})";
+    public static final String STARTINGTIME_VALIDATION_REGEX = "^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4}$";
 
     public final String value;
 
