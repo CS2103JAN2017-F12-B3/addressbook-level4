@@ -15,10 +15,12 @@ public class SampleDataUtil {
     public static Task[] getSampleTasks() {
         try {
             return new Task[] {
-                new Task(new Title("Read Harry Potter"), new Description("Chapter 5 - 7"), new StartDate("15/03/12"),
-                    new EndDate("17/03/12"),
-                    new UniqueTagList("friends")),
-                new Task(new Title("Bernice Yu"), new Description("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), new StartDate("berniceyu@gmail.com"),
+                new Task(new Title("title"), new Description("description"), new StartDate("startdate"),
+                    new EndDate("enddate"),
+                    new UniqueTagList("tags"))
+                /*TO-DO:
+                 * 
+                 * new Task(new Title("Bernice Yu"), new Description("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), new StartDate("berniceyu@gmail.com"),
                     new EndDate("99272758"),
                     new UniqueTagList("colleagues", "friends")),
                 new Task(new Title("Charlotte Oliveiro"), new Description("Blk 11 Ang Mo Kio Street 74, #11-04"), new StartDate("charlotte@yahoo.com"),
@@ -32,7 +34,7 @@ public class SampleDataUtil {
                     new UniqueTagList("classmates")),
                 new Task(new Title("Roy Balakrishnan"), new Description("Blk 45 Aljunied Street 85, #11-31"), new StartDate("royb@gmail.com"),
                     new EndDate("92624417"),
-                    new UniqueTagList("colleagues"))
+                    new UniqueTagList("colleagues"))*/
             };
         } catch (IllegalValueException e) {
             throw new AssertionError("sample data cannot be invalid", e);
@@ -47,7 +49,7 @@ public class SampleDataUtil {
             }
             return sampleAB;
         } catch (DuplicateTaskException e) {
-            throw new AssertionError("sample data cannot contain duplicate persons", e);
+            throw new AssertionError("sample data cannot contain duplicate tasks", e);
         }
     }
 }

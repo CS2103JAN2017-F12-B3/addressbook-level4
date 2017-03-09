@@ -18,9 +18,9 @@ public class EndDate {
      *
      * @throws IllegalValueException if given deadline string is invalid.
      */
-    public EndDate(String deadline) throws IllegalValueException {
-        assert deadline != null;
-        String trimmedDeadline = deadline.trim();
+    public EndDate(String endDate) throws IllegalValueException {
+        assert endDate != null;
+        String trimmedDeadline = endDate.trim();
         if (!isValidDeadline(trimmedDeadline)) {
             throw new IllegalValueException(MESSAGE_DEADLINE_CONSTRAINTS);
         }
