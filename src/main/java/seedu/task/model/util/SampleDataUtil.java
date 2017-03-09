@@ -15,26 +15,24 @@ public class SampleDataUtil {
     public static Task[] getSampleTasks() {
         try {
             return new Task[] {
-                new Task(new Title("title"), new Description("description"), new StartDate("startdate"),
-                    new EndDate("enddate"),
-                    new UniqueTagList("tags"))
-                /*TO-DO:
-                 * 
-                 * new Task(new Title("Bernice Yu"), new Description("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), new StartDate("berniceyu@gmail.com"),
-                    new EndDate("99272758"),
+                new Task(new Title("title"), new Description("description"), new StartDate("01/11/2011"),
+                    new EndDate("01/12/2011"),
+                    new UniqueTagList("tags")),
+                new Task(new Title("Visit Bernice Yu"), new Description("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), new StartDate("01/11/2011"),
+                    new EndDate("01/11/2011"),
                     new UniqueTagList("colleagues", "friends")),
-                new Task(new Title("Charlotte Oliveiro"), new Description("Blk 11 Ang Mo Kio Street 74, #11-04"), new StartDate("charlotte@yahoo.com"),
-                    new EndDate("93210283"),
+                new Task(new Title("Visit Charlotte Oliveiro"), new Description("Blk 11 Ang Mo Kio Street 74, #11-04"), new StartDate("05/05/2200"),
+                    new EndDate("05/05/2200"),
                     new UniqueTagList("neighbours")),
-                new Task(new Title("David Li"), new Description("Blk 436 Serangoon Gardens Street 26, #16-43"), new StartDate("lidavid@google.com"),
-                    new EndDate("91031282"),
+                new Task(new Title("Call David Li"), new Description("Phone number: 12345678"), new StartDate("09/09/2017"),
+                    new EndDate("08/10/2017"),
                     new UniqueTagList("family")),
-                new Task(new Title("Irfan Ibrahim"), new Description("Blk 47 Tampines Street 20, #17-35"), new StartDate("irfan@outlook.com"),
-                    new EndDate("92492021"),
+                new Task(new Title("Fetch package from Irfan Ibrahim"), new Description("Blk 47 Tampines Street 20, #17-35"), new StartDate("09/09/2017"),
+                    new EndDate("09/10/2017"),
                     new UniqueTagList("classmates")),
-                new Task(new Title("Roy Balakrishnan"), new Description("Blk 45 Aljunied Street 85, #11-31"), new StartDate("royb@gmail.com"),
-                    new EndDate("92624417"),
-                    new UniqueTagList("colleagues"))*/
+                new Task(new Title("Party with Roy Balakrishnan"), new Description("Blk 45 Aljunied Street 85, #11-31"), new StartDate("08/08/2017"),
+                    new EndDate("08/08/2017"),
+                    new UniqueTagList("colleagues"))
             };
         } catch (IllegalValueException e) {
             throw new AssertionError("sample data cannot be invalid", e);
