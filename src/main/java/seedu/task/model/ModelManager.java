@@ -4,8 +4,8 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 import javafx.collections.transformation.FilteredList;
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.commons.util.StringUtil;
+import seedu.task.commons.util.CollectionUtil;
+import seedu.task.commons.util.StringUtil;
 import seedu.task.commons.core.ComponentManager;
 import seedu.task.commons.core.LogsCenter;
 import seedu.task.commons.core.UnmodifiableObservableList;
@@ -32,7 +32,7 @@ public class ModelManager extends ComponentManager implements Model {
         super();
         assert !CollectionUtil.isAnyNull(taskManager, userPrefs);
 
-        logger.fine("Initializing with address book: " + taskManager + " and user prefs " + userPrefs);
+        logger.fine("Initializing with task manager: " + taskManager + " and user prefs " + userPrefs);
 
         this.taskManager = new TaskManager(taskManager);
         filteredTasks = new FilteredList<>(this.taskManager.getTaskList());
