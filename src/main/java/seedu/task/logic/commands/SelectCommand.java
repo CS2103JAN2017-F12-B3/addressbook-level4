@@ -5,7 +5,7 @@ import seedu.task.commons.core.Messages;
 import seedu.task.commons.core.UnmodifiableObservableList;
 import seedu.task.commons.events.ui.JumpToListRequestEvent;
 import seedu.task.logic.commands.exceptions.CommandException;
-import seedu.task.model.person.ReadOnlyTask;
+import seedu.task.model.task.ReadOnlyTask;
 
 /**
  * Selects a task identified using it's last displayed index from the task manager.

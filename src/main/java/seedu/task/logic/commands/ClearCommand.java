@@ -1,6 +1,6 @@
 package seedu.task.logic.commands;
 
-import seedu.task.model.AddressBook;
+import seedu.task.model.TaskManager;
 
 /**
  * Clears the task manager.
@@ -14,7 +14,7 @@ public class ClearCommand extends Command {
     @Override
     public CommandResult execute() {
         assert model != null;
-        model.resetData(new AddressBook());
+        model.resetData(new TaskManager());
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

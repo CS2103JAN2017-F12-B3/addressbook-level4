@@ -6,10 +6,10 @@ import java.util.Optional;
 import seedu.task.commons.core.Messages;
 import seedu.task.commons.util.CollectionUtil;
 import seedu.task.logic.commands.exceptions.CommandException;
-import seedu.task.model.task.Address;
-import seedu.task.model.task.EndDate;
-import seedu.task.model.task.Name;
 import seedu.task.model.task.Task;
+import seedu.task.model.task.EndDate;
+import seedu.task.model.task.Description;
+import seedu.task.model.task.Title;
 import seedu.task.model.task.StartDate;
 import seedu.task.model.task.ReadOnlyTask;
 import seedu.task.model.task.UniqueTaskList;
@@ -63,10 +63,10 @@ public class EditCommand extends Command {
         try {
             model.updateTask(filteredTaskListIndex, editedTask);
         } catch (UniqueTaskList.DuplicateTaskException dpe) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
         model.updateFilteredListToShowAll();
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, taskToEdit));
+        return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, taskToEdit));
     }
 
     /**
@@ -78,11 +78,12 @@ public class EditCommand extends Command {
         assert taskToEdit != null;
 
         Title updatedTitle = editTaskDescriptor.getTitle().orElseGet(taskToEdit::getTitle);
+        Description description = editTaskDescriptor.getDescription().orElseGet(taskToEdit::getDescription);
         StartDate startDate = editTaskDescriptor.getStartDate().orElseGet(taskToEdit::getStartDate);
         EndDate endDate = editTaskDescriptor.getEndDate().orElseGet(taskToEdit::getEndDate);
         UniqueTagList updatedTags = editTaskDescriptor.getTags().orElseGet(taskToEdit::getTags);
 
-        return new Task(updatedTitle, startDate, endDate, updatedTags);
+        return new Task(updatedTitle, description, startDate, endDate, updatedTags);
     }
 
     /**
@@ -91,6 +92,7 @@ public class EditCommand extends Command {
      */
     public static class EditTaskDescriptor {
         private Optional<Title> title = Optional.empty();
+        private Optional<Description> description = Optional.empty();
         private Optional<StartDate> startDate = Optional.empty();
         private Optional<EndDate> endDate = Optional.empty();
         private Optional<UniqueTagList> tags = Optional.empty();
@@ -98,7 +100,7 @@ public class EditCommand extends Command {
         public EditTaskDescriptor() {}
 
         public EditTaskDescriptor(EditTaskDescriptor toCopy) {
-            this.title = toCopy.getName();
+            this.title = toCopy.getTitle();
             this.startDate = toCopy.getStartDate();
             this.endDate = toCopy.getEndDate();
             this.tags = toCopy.getTags();
@@ -119,6 +121,15 @@ public class EditCommand extends Command {
         public Optional<Title> getTitle() {
             return title;
         }
+        
+        public void setDescription(Optional<Description> description) {
+        	assert description != null;
+        	this.description = description;
+        }
+        
+        public Optional<Description> getDescription() {
+        	return description;
+        }
 
         public void setStartDate(Optional<StartDate> startDate) {
             assert startDate != null;
@@ -129,13 +140,13 @@ public class EditCommand extends Command {
             return startDate;
         }
 
-        public void setEndDate(Optional<EndDate> email) {
-            assert email != null;
-            this.email = email;
+        public void setEndDate(Optional<EndDate> endDate) {
+            assert endDate != null;
+            this.endDate = endDate;
         }
 
         public Optional<EndDate> getEndDate() {
-            return email;
+            return endDate;
         }
 
         public void setTags(Optional<UniqueTagList> tags) {

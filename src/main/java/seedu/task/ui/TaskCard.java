@@ -18,7 +18,7 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label deadline;
+    private Label endDate;
     @FXML
     private Label task;
     @FXML
@@ -30,8 +30,7 @@ public class TaskCard extends UiPart<Region> {
         super(FXML);
         title.setText(task.getTitle().fullTitle);
         id.setText(displayedIndex + ". ");
-        deadline.setText(task.getDeadline().value);
-        task.setText(task.getTask().value);
+        endDate.setText(task.getEndDate().value);
         startDate.setText(task.getStartDate().value);
         initTags(task);
     }

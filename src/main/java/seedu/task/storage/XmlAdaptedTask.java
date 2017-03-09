@@ -10,7 +10,7 @@ import seedu.task.model.task.Description;
 import seedu.task.model.task.StartDate;
 import seedu.task.model.task.Title;
 import seedu.task.model.task.Task;
-import seedu.task.model.task.Deadline;
+import seedu.task.model.task.EndDate;
 import seedu.task.model.task.ReadOnlyTask;
 import seedu.task.model.tag.Tag;
 import seedu.task.model.tag.UniqueTagList;
@@ -23,11 +23,11 @@ public class XmlAdaptedTask {
     @XmlElement(required = true)
     private String title;
     @XmlElement(required = true)
-    private String deadline;
+    private String description;
     @XmlElement(required = true)
     private String startDate;
     @XmlElement(required = true)
-    private String description;
+    private String endDate;
 
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
@@ -46,7 +46,7 @@ public class XmlAdaptedTask {
      */
     public XmlAdaptedTask(ReadOnlyTask source) {
         title = source.getTitle().fullTitle;
-        deadline = source.getDeadline().value;
+        endDate = source.getEndDate().value;
         startDate = source.getStartDate().value;
         description = source.getDescription().value;
         tagged = new ArrayList<>();
@@ -61,15 +61,15 @@ public class XmlAdaptedTask {
      * @throws IllegalValueException if there were any data constraints violated in the adapted person
      */
     public Task toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
+        final List<Tag> taskTags = new ArrayList<>();
         for (XmlAdaptedTag tag : tagged) {
             taskTags.add(tag.toModelType());
         }
         final Title title = new Title(this.title);
-        final Deadline deadline = new Deadline(this.deadline);
+        final EndDate endDate = new EndDate(this.endDate);
         final StartDate startDate = new StartDate(this.startDate);
         final Description description = new Description(this.description);
-        final UniqueTagList tags = new UniqueTagList(personTags);
-        return new Task(title, deadline, startDate, description, tags);
+        final UniqueTagList tags = new UniqueTagList(taskTags);
+        return new Task(title, description, startDate,endDate, tags);
     }
 }

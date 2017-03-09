@@ -11,14 +11,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.commons.util.StringUtil;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
-import seedu.address.model.tag.UniqueTagList;
+import seedu.task.commons.exceptions.IllegalValueException;
+import seedu.task.commons.util.StringUtil;
+import seedu.task.model.task.Title;
+import seedu.task.model.task.Description;
+import seedu.task.model.task.StartDate;
+import seedu.task.model.task.EndDate;
+import seedu.task.model.tag.Tag;
+import seedu.task.model.tag.UniqueTagList;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes
@@ -67,25 +67,33 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code Optional<String> name} into an {@code Optional<Title>} if {@code title} is present.
+     * Parses a {@code Optional<String> title} into an {@code Optional<Title>} if {@code title} is present.
      */
-    public static Optional<Title> parseName(Optional<String> title) throws IllegalValueException {
+    public static Optional<Title> parseTitle(Optional<String> title) throws IllegalValueException {
         assert title != null;
         return title.isPresent() ? Optional.of(new Title(title.get())) : Optional.empty();
+    }
+    
+    /**
+     * Parses a {@code Optional<String> description} into an {@code Optional<Description>} if {@code description} is present.
+     */
+    public static Optional<Description> parseDescription(Optional<String> description) throws IllegalValueException {
+        assert description != null;
+        return description.isPresent() ? Optional.of(new Description(description.get())) : Optional.empty();
     }
 
     /**
      * Parses a {@code Optional<String> startDate} into an {@code Optional<StartDate>} if {@code startDate} is present.
      */
-    public static Optional<StartDate> parsePhone(Optional<String> startDate) throws IllegalValueException {
+    public static Optional<StartDate> parseStartDate(Optional<String> startDate) throws IllegalValueException {
         assert startDate != null;
-        return startDate.isPresent() ? Optional.of(new Phone(startDate.get())) : Optional.empty();
+        return startDate.isPresent() ? Optional.of(new StartDate(startDate.get())) : Optional.empty();
     }
 
     /**
      * Parses a {@code Optional<String> endDate} into an {@code Optional<EndDate>} if {@code endDate} endDate present.
      */
-    public static Optional<EndDate> parseAddress(Optional<String> endDate) throws IllegalValueException {
+    public static Optional<EndDate> parseEndDate(Optional<String> endDate) throws IllegalValueException {
         assert endDate != null;
         return endDate.isPresent() ? Optional.of(new EndDate(endDate.get())) : Optional.empty();
     }

@@ -21,12 +21,12 @@ public class Task implements ReadOnlyTask {
     /**
      * Every field must be present and not null.
      */
-    public Task(Title title, EndDate endDate, StartDate startDate, Description description, UniqueTagList tags) {
+    public Task(Title title, Description description, StartDate startDate,EndDate endDate, UniqueTagList tags) {
         assert !CollectionUtil.isAnyNull(title, endDate, startDate, description, tags);
         this.title = title;
-        this.endDate = endDate;
-        this.startDate = startDate;
         this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.tags = new UniqueTagList(tags); // protect internal tags from changes in the arg list
     }
 
@@ -34,7 +34,7 @@ public class Task implements ReadOnlyTask {
      * Creates a copy of the given ReadOnlyTask.
      */
     public Task(ReadOnlyTask source) {
-        this(source.getTitle(), source.getEndDate(), source.getStartDate(), source.getDescription(), source.getTags());
+        this(source.getTitle(), source.getDescription(), source.getStartDate(), source.getEndDate(), source.getTags());
     }
 
     public void setTitle(Title title) {
