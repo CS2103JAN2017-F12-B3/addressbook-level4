@@ -2,7 +2,7 @@ package guitests.guihandles;
 
 import guitests.GuiRobot;
 import javafx.stage.Stage;
-import seedu.taskmanager.TestApp;
+import seedu.address.TestApp;
 
 /**
  * Provides a handle for the main GUI.
@@ -13,8 +13,8 @@ public class MainGuiHandle extends GuiHandle {
         super(guiRobot, primaryStage, TestApp.APP_TITLE);
     }
 
-    public TaskListPanelHandle getPersonListPanel() {
-        return new TaskListPanelHandle(guiRobot, primaryStage);
+    public PersonListPanelHandle getPersonListPanel() {
+        return new PersonListPanelHandle(guiRobot, primaryStage);
     }
 
     public ResultDisplayHandle getResultDisplay() {

@@ -1,30 +1,30 @@
 package guitests;
 
 import static org.junit.Assert.assertTrue;
-import static seedu.taskmanager.logic.commands.DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS;
+import static seedu.address.logic.commands.DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS;
 
 import org.junit.Test;
 
-import seedu.taskmanager.testutil.TestPerson;
-import seedu.taskmanager.testutil.TestUtil;
+import seedu.address.testutil.TestPerson;
+import seedu.address.testutil.TestUtil;
 
-public class DeleteCommandTest extends TaskManagerGuiTest {
+public class DeleteCommandTest extends AddressBookGuiTest {
 
     @Test
     public void delete() {
 
         //delete the first in the list
-        TestPerson[] currentList = td.getTypicalTasks();
+        TestPerson[] currentList = td.getTypicalPersons();
         int targetIndex = 1;
         assertDeleteSuccess(targetIndex, currentList);
 
         //delete the last in the list
-        currentList = TestUtil.removeTaskFromList(currentList, targetIndex);
+        currentList = TestUtil.removePersonFromList(currentList, targetIndex);
         targetIndex = currentList.length;
         assertDeleteSuccess(targetIndex, currentList);
 
         //delete from the middle of the list
-        currentList = TestUtil.removeTaskFromList(currentList, targetIndex);
+        currentList = TestUtil.removePersonFromList(currentList, targetIndex);
         targetIndex = currentList.length / 2;
         assertDeleteSuccess(targetIndex, currentList);
 
@@ -41,15 +41,15 @@ public class DeleteCommandTest extends TaskManagerGuiTest {
      */
     private void assertDeleteSuccess(int targetIndexOneIndexed, final TestPerson[] currentList) {
         TestPerson personToDelete = currentList[targetIndexOneIndexed - 1]; // -1 as array uses zero indexing
-        TestPerson[] expectedRemainder = TestUtil.removeTaskFromList(currentList, targetIndexOneIndexed);
+        TestPerson[] expectedRemainder = TestUtil.removePersonFromList(currentList, targetIndexOneIndexed);
 
         commandBox.runCommand("delete " + targetIndexOneIndexed);
 
         //confirm the list now contains all previous persons except the deleted person
-        assertTrue(taskListPanel.isListMatching(expectedRemainder));
+        assertTrue(personListPanel.isListMatching(expectedRemainder));
 
         //confirm the result message is correct
-        assertResultMessage(String.format(MESSAGE_DELETE_TASK_SUCCESS, personToDelete));
+        assertResultMessage(String.format(MESSAGE_DELETE_PERSON_SUCCESS, personToDelete));
     }
 
 }
