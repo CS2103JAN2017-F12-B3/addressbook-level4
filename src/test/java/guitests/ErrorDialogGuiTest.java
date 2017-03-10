@@ -7,9 +7,9 @@ import java.io.IOException;
 import org.junit.Test;
 
 import guitests.guihandles.AlertDialogHandle;
-import seedu.taskmanager.commons.events.storage.DataSavingExceptionEvent;
+import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 
-public class ErrorDialogGuiTest extends TaskManagerGuiTest {
+public class ErrorDialogGuiTest extends AddressBookGuiTest {
 
     @Test
     public void showErrorDialogs() throws InterruptedException {
