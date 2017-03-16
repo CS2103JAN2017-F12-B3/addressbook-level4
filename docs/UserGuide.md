@@ -44,14 +44,14 @@ A command guide will be shown in the window
 ### 2.2. Adding a task: `add`
 
 Adds a task to the task manager<br>
-Format: `add TASK from STARTING TIME by FINISHING TIME`
+Format: `add TITLE s/STARTDATE e/ENDDATE d/DESCRIPTION [#TAG]...`
 
 > Tasks can have any number of tags (including 0)
 
 Examples:
 
-* `add t/submit report by f/Friday #academic`
-* `add t/read Harry Potter from s/Monday by f/Saturday #personal`
+* `add Submit report e/01/01/2018 #academic`
+* `add Read Harry Potter s/01/01/2017 e/01/01/2018 #personal`
 
 ### 2.3. Listing all tasks : `list`
 
@@ -81,10 +81,20 @@ Format: `edit INDEX COMPONENT`
 
 Examples:
 
-* `edit 3 f/Saturday`<br>
-  Changes the finishing time of task 3 to Saturday
+* `edit 3 e/01/01/2018`<br>
+  Changes the finishing time of task 3 to 01/01/2018
+  
+### 2.6. Mark a task as done when it finishes : `finish`
 
-### 2.6. Finding all tasks containing any keyword in their task description: `find`
+Mark a task as "done" when the task finishes in the task manager.<br>
+The tasks can be edited through the index from a list and marked as done using a tag.<br>
+Format: `finish INDEX [#done]`
+
+Examples:
+
+* `finish 4 #done`<br>
+
+### 2.7. Finding all tasks containing any keyword in their task description: `find`
 
 Format: `find KEYWORD`
 
@@ -93,7 +103,7 @@ Examples:
 * `find report`<br>
   Returns `submit report`  `print report` etc. in the column
 
-### 2.7. Deleting a task : `delete`
+### 2.8. Deleting a task : `delete`
 
 Deletes the specified task from the task manager. Irreversible.<br>
 Format: `delete INDEX`
@@ -102,22 +112,22 @@ Format: `delete INDEX`
 > The index refers to the index number shown in the most recent listing.<br>
 > The index **must be a positive integer** 1, 2, 3, ...
 
-### 2.8. Clearing all entries : `clear`
+### 2.9. Clearing all entries : `clear`
 
 Clears all entries from the task manager.<br>
 Format: `clear`
 
-### 2.9. Viewing history of task : `history`
+### 2.10. Viewing history of task : `history`
 
 A list of history of tasks that have been completed will be shown in the column sorted in reverse-chronological order
 Format: `history`
 
-### 2.10. Exiting the program : `exit`
+### 2.11. Exiting the program : `exit`
 
 Exits the program.<br>
 Format: `exit`
 
-### 2.11. Saving the data
+### 2.12. Saving the data
 
 Task Manager data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.
@@ -133,12 +143,11 @@ There is no need to save manually.
 Command | Syntax | Example
 ------- | ------ | -------
 Help    | help
-Add     | add TASK                                      | add t/submit report by f/Friday
-        | add TASK by FINISHING TIME                    |
-        | add TASK from STARTING TIME by FINISHING TIME |
+Add     | add TITLE s/STARTDATE e/ENDDATE d/DESCRIPTION [#TAG]...| add Submit report e/01/01/2018
 List    | list
 Select  | select INDEX                    | select 3
 Edit    | edit INDEX COMPONENT            | edit 3 e/Saturday
+Finish  | finish INDEX [#done]            | finish 3 #done
 Find    | find KEYWORD                    | find report
 Delete  | delete INDEX                    | delete 3
 Clear   | clear
