@@ -138,7 +138,7 @@ Add     | add TASK                                      | add t/submit report by
         | add TASK from STARTING TIME by FINISHING TIME |
 List    | list
 Select  | select INDEX                    | select 3
-Edit    | edit INDEX COMPONENT            | edit 3 f/Saturday
+Edit    | edit INDEX COMPONENT            | edit 3 e/Saturday
 Find    | find KEYWORD                    | find report
 Delete  | delete INDEX                    | delete 3
 Clear   | clear
