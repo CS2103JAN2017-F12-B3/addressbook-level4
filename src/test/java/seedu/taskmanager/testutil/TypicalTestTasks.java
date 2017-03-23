@@ -16,19 +16,19 @@ public class TypicalTestTasks {
         try {
             buy1 = new TaskBuilder().withTitle("Buy Banana")
                     .withDescription("Sunpride brand").withEndDate("12/03/2017")
-                    .withStartDate("12/03/2017")
+                    .withStartDate("10/03/2017")
                     .withTags("friends").build();
-            buy2 = new TaskBuilder().withTitle("Buy new house").withDescription("at 311, Clementi Ave 2, #02-25")
+            buy2 = new TaskBuilder().withTitle("Buy new house").withDescription("at 311, Clementi Ave 2 02-25")
                     .withEndDate("15/03/2017").withStartDate("12/03/2017")
                     .withTags("owesMoney", "friends").build();
             meeting1 = new TaskBuilder().withTitle("Meeting boss").withStartDate("17/03/2017")
-                    .withEndDate("17/03/2017").withDescription("at the office").build();
+                    .withEndDate("27/03/2017").withDescription("at the office").build();
             meeting2 = new TaskBuilder().withTitle("Meeting Daniel Meier").withStartDate("18/03/2017")
-                    .withEndDate("12/03/2017").withDescription("at 10th street").build();
+                    .withEndDate("22/03/2017").withDescription("at 10th street").build();
             submit1 = new TaskBuilder().withTitle("Submit CS2013").withStartDate("03/04/2017")
                     .withEndDate("05/04/2017").withDescription("TaskManager Version 1.0.2").build();
-            submit2 = new TaskBuilder().withTitle("Submit FYP Report").withStartDate("31/03/2017")
-                    .withEndDate("31/03/2017").withDescription("a big burden").build();
+            submit2 = new TaskBuilder().withTitle("Submit FYP Report").withStartDate("22/03/2017")
+                    .withEndDate("29/04/2017").withDescription("a big burden").build();
             send1 = new TaskBuilder().withTitle("Send encyrpted package").withStartDate("14/03/2017")
                     .withEndDate("20/03/2017").withDescription("CIA Secret Files").build();
 
