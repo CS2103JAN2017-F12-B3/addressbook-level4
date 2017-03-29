@@ -33,16 +33,20 @@ public class StartDate extends Date {
 
     private static long startDateConstructor(String startDate) throws IllegalValueException {
         assert startDate != null;
+        if (!isValidStartDate(startDate)) {
+            throw new IllegalValueException(MESSAGE_STARTDATE_CONSTRAINTS);
+        }
         try {
-            if (!isValidStartDate(startDate)) {
-                throw new IllegalValueException(MESSAGE_STARTDATE_CONSTRAINTS);
+            if (startDate.trim().equals("")) {
+                Calendar cal = Calendar.getInstance();
+                return cal.getTimeInMillis();
             }
             if (startDate.trim().equals("")) {
                 Calendar cal = Calendar.getInstance();
                 return cal.getTimeInMillis();
             }
             return sdfInput.parse(startDate).getTime();
-        } catch (IllegalValueException | ParseException e) {
+        } catch (ParseException e) {
             throw new IllegalValueException(MESSAGE_STARTDATE_CONSTRAINTS);
         }
     }
