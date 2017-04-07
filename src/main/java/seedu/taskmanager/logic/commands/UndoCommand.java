@@ -4,6 +4,9 @@ import seedu.taskmanager.logic.commands.exceptions.CommandException;
 import seedu.taskmanager.model.HistoryManager;
 
 // @@author A0140032E
+/**
+ * Undo the last action by user that changes the task manager model
+ */
 public class UndoCommand extends Command {
     public static final String COMMAND_WORD = "undo";
 

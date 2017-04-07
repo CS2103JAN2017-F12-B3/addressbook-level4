@@ -4,6 +4,9 @@ import seedu.taskmanager.logic.commands.exceptions.CommandException;
 import seedu.taskmanager.model.HistoryManager;
 
 // @@author A0140032E
+/**
+ * Redo the last undo action by user
+ */
 public class RedoCommand extends Command {
     public static final String COMMAND_WORD = "redo";
 
