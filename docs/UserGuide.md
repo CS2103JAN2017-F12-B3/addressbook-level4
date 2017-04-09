@@ -43,11 +43,12 @@ Format: `help`
 Adds a task to Funtasktic.<br>
 Format: `add TASK s/STARTING_DATE_TIME e/ENDING_DATE_TIME r/FREQUENCY d/Description t/tags`
 
-> Only Task title is a compulsory field.<br>
-> For recurring tasks starting date is compulsory.<br> 
+> Only Task title is a compulsory field.<br> 
 > Tasks can have any number of tags (including none).<br>
 > Tasks with date specified without time will have the time defaulted to the current time.<br>
 > Tasks with time specified without date will have the date defaulted to the current date.<br>
+> For recurring tasks starting date is compulsory.<br>
+> Tasks can be made recurring daily, weekly, monthly, and yearly.<br>
 > Date and time supports natural language.
 
 Examples:
@@ -56,6 +57,7 @@ Examples:
 * `add read Harry Potter s/12 March 2017 1300 e/christmas d/chapter 5 t/personal`
 * `add do homework s/today 5pm e/tmr 1800 t/urgent r/week`
 * `add buy groceries`
+* `add pick up daughter s/today e/next year r/day
 
 ### 2.3. Listing tasks : `list`
 
@@ -293,6 +295,7 @@ Help         | help
 Add          | add TASK                                                     | add submit report
 Add          | add TASK s/STARTING DATE                                     | add submit report s/24/03/2017
 Add          | add TASK s/STARTING DATE e/ENDING DATE                       | add submit report s/24/03/207 e/27/03/2017
+Add          | add TASK s/STARTING DATE e/ENDING DATE r/RECURRING           | add submit report s/24/03/207 e/27/03/2017 r/day
 Add          | add TASK s/STARTING DATE e/ENDING DATE d/DESCRIPTION         | add submit report s/24/03/207 e/27/03/2017 d/assignment 1
 Add          | add TASK s/STARTING DATE e/ENDING DATE d/Description t/tags  | add submit report s/24/03/207 e/27/03/2017 d/assignment 1 t/school
 List         | list
@@ -303,12 +306,18 @@ Find         | find KEYWORD(s)                                              | fi
 Find by Date | findbydate DATE                                              | findbydate today
 Find by Date | findbydate DATE to DATE                                      | findbydate today to next wednesday
 Delete       | delete INDEX                                                 | delete 3
+Delete       | remove INDEX                                                 | remove 3
 Sort         | sort KEYWORD                                                 | sort e/
 Undo         | undo
 Redo         | redo
 Done         | done INDEX                                                   | done 1
+Done         | complete INDEX                                               | complete 1
+Done         | finish INDEX                                                 | finish 1
 Undone       | undone INDEX                                                 | undone 2
+Undone       | revert INDEX                                                 | revert 2
 Save as      | saveas FILEPATH                                              | saveas newtaskmanager.xml
+Save as      | save FILEPATH                                                | save newtaskmanager.xml
 Load         | load FILEPATH                                                | load /Users/admin/taskmanager.xml
+Load         | open FILEPATH                                                | open /Users/admin/taskmanager.xml
 Clear        | clear
 Exit         | exit
