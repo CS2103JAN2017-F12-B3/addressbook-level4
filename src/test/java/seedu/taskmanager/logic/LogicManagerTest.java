@@ -216,12 +216,9 @@ public class LogicManagerTest {
 
     // @@author A0114269E
     /**
-     * Executes the command, confirms that a CommandException is not thrown and
-     * that the result message is correct. Also confirms that both the 'task
-     * manager' and the 'last shown list' are as specified.
-     *
-     * @see #assertCommandBehavior(boolean, String, String, ReadOnlyTaskManager,
-     *      List)
+     * Checks if the directory has been successfully changed, confirms a new file location 
+     * contains an XML file, confirms the config file has been configured to the change and
+     * that the TaskManager TaskList are the same as the one in storage file.
      */
     private void assertDirectoryChanged(String newFilePath, Config config) {
         boolean isFileExist = new File(newFilePath).exists();
