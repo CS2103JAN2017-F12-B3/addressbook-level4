@@ -216,7 +216,7 @@ public class LogicManagerTest {
 
     // @@author A0114269E
     /**
-     * Checks if the directory has been successfully changed, confirms a new file location 
+     * Checks if the directory has been successfully changed, confirms a new file location
      * contains an XML file, confirms the config file has been configured to the change and
      * that the TaskManager TaskList are the same as the one in storage file.
      */
