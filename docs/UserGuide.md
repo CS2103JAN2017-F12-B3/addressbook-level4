@@ -1,4 +1,4 @@
-# FunTaskTic - User Guide
+# Funtasktic - User Guide
 
 By : `F12-B3`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&nbsp;&nbsp; Licence: `MIT`
 
@@ -17,7 +17,7 @@ By : `F12-B3`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&nbsp;&nb
    > This app will not work with earlier versions of Java 8.
 
 1. Download the latest `funtasktic.jar` from the [releases](../../../releases) tab.
-2. Copy the file to the folder you want to use as the home folder for your Task manager.
+2. Copy the file to the folder you want to use as the home folder for your Funtasktic.
 3. Double-click the file to start the app. The GUI should appear in a few seconds.
    <img src="images/uiv0.5.png" width="600">
 
@@ -26,7 +26,7 @@ By : `F12-B3`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&nbsp;&nb
 5. Some example commands you can try:
    * **`help`** : list all the command can use
    * **`list`** : list all tasks
-   * **`add submit report by Friday`** : add a task to the task manager
+   * **`add submit report by Friday`** : add a task to the Funtasktic
    * **`exit`** : exits the app
 6. Refer to the [Features](#features) section below for details of each command.<br>
 
@@ -40,7 +40,7 @@ Format: `help`
 
 ### 2.2. Adding a task : `add`
 
-Adds a task to FuntaskTic.<br>
+Adds a task to Funtasktic.<br>
 Format: `add TASK s/STARTING_DATE_TIME e/ENDING_DATE_TIME r/FREQUENCY d/Description t/tags`
 
 > Only Task title is a compulsory field.<br>
@@ -59,7 +59,7 @@ Examples:
 
 ### 2.3. Listing tasks : `list`
 
-Shows a list of tasks in FunTaskTic.<br>
+Shows a list of tasks in Funtasktic.<br>
 Format: `list KEYWORD`
 
 > Lists tasks according to the input `KEYWORD`.<br>
@@ -86,14 +86,14 @@ Examples:
 
 * `list`<br>
   `select 2`<br>
-  Selects the 2nd task in the task manager.
+  Selects the 2nd task in Funtasktic.
 * `find report` <br>
   `select 1`<br>
   Selects the 1st task in the results of the `find` command.
 
 ### 2.5. Editing a task : `edit` or `change`
 
-Edits an existing task in FunTaskTic.<br>
+Edits an existing task in Funtasktic.<br>
 The tasks can be edited through the index from a list.<br>
 Multiple fields in a task can be edited at once.<br>
 Format: `edit INDEX COMPONENT(s)`
@@ -124,7 +124,7 @@ Examples:
 
 ### 2.7. Deleting a task : `delete` or `remove`
 
-Deletes the specified task from FunTaskTic.<br>
+Deletes the specified task from Funtasktic.<br>
 Format: `delete INDEX` `remove INDEX`
 
 > Deletes the task at the specified `INDEX`.<br>
@@ -134,9 +134,9 @@ Format: `delete INDEX` `remove INDEX`
 Examples:
 
 * `delete 1`<br>
-   Delete the task with index 1 in the Task Manager
+   Delete the task with index 1 in Funtasktic
 * `remove 3`<br>
-   Delete the task with index 3 in the Task Manager
+   Delete the task with index 3 in Funtasktic
 
 ### 2.8. Sorting tasks : `sort`
 
@@ -159,7 +159,7 @@ Examples:
 
 ### 2.9. Clearing all entries : `clear`
 
-Clears all entries from FunTaskTic.<br>
+Clears all entries from Funtasktic.<br>
 Format: `clear`
 
 ### 2.10. Exiting the program : `exit`
@@ -172,7 +172,7 @@ Format: `exit`
 FunTaskTic data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.
 
-### 2.12. Changing the directory of the task manager : `load` or `open`
+### 2.12. Changing the directory of Funtasktic : `load` or `open`
 
 Load FunTaskTic data from specified file path and continue using that directory for operations.<br>
 Create new file if no such file exists with a warning.<br>
@@ -187,9 +187,9 @@ Examples:
 * `open data/new/cloudsync.xml`<br>
   Changes the Storage Directory to ./data/new/cloudsync.xml
 
-### 2.13. Saving the task manager to a specified directory: `save` or  `saveas`
+### 2.13. Saving Funtasktic to a specified directory: `save` or  `saveas`
 
-Save FunTaskTic data to specified file path and continue using that directory for operations.<br>
+Save Funtasktic data to specified file path and continue using that directory for operations.<br>
 If existing file with the same name exists, it will be overwritten with current FunTaskTic data.<br>
 Default file path is at data/taskmanager.xml.<br>
 Format: `save FILEPATH` `saveas FILEPATH`
@@ -226,7 +226,7 @@ Examples:
 * `clear`<br>
   `undo`<br>
   `redo`<br>
-  Redoes last user command in undo history, i.e `clear`. Task manager will be cleared
+  Redoes last user command in undo history, i.e `clear`. Tasks in Funtasktic will be cleared
 * `add New task`<br>
   `list`<br>
   `undo`<br>
@@ -247,7 +247,7 @@ Examples:
 
 ### 2.17. Marking a task as DONE : `done` or `complete` or `finish`
 
-Marks the specified task from the task manager as DONE.<br>
+Marks the specified task from the Funtasktic as DONE.<br>
 Format: `done INDEX` `complete INDEX` `finish INDEX`
 
 > Mark the task at the specified `INDEX` as DONE.<br>
@@ -265,7 +265,7 @@ Examples:
 
 ### 2.18. Marking a task as TODO : `undone` or `revert`
 
-Marks the specified task from the task manager as TODO from being DONE initially.<br>
+Marks the specified task from the Funtasktic as TODO from being DONE initially.<br>
 Format: `undone INDEX` `revert INDEX`
 
 > Mark the task at the specified `INDEX` as TODO from initially DONE.<br>
@@ -283,7 +283,7 @@ Examples:
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with
-       the file that contains the data of your previous Task Manager folder.
+       the file that contains the data of your previous Funtasktic folder.
 
 ## 4. Command Summary
 
