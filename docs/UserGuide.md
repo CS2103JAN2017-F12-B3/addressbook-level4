@@ -26,7 +26,7 @@ By : `F12-B3`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&nbsp;&nb
 5. Some example commands you can try:
    * **`help`** : list all the command can use
    * **`list`** : list all tasks
-   * **`add submit report by Friday`** : add a task to the Funtasktic
+   * **`add submit report e/Friday`** : add a task to Funtasktic
    * **`exit`** : exits the app
 6. Refer to the [Features](#features) section below for details of each command.<br>
 
@@ -54,7 +54,7 @@ Examples:
 
 * `add submit report e/29/07/2017 3pm d/Assignment 1 t/academic`
 * `add read Harry Potter s/12 March 2017 1300 e/christmas d/chapter 5 t/personal`
-* `add do homework s/today 5pm e/tmr 1800 t/urgent`
+* `add do homework s/today 5pm e/tmr 1800 t/urgent r/week`
 * `add buy groceries`
 
 ### 2.3. Listing tasks : `list`
@@ -102,7 +102,7 @@ Examples:
 
 * `edit 3 e/24/06/2017`<br>
   Changes the ENDING DATE of task 3 to 24/06/2017
-* `edit 2 s/21/01/2017 e/24/06/2017 #school`<br>
+* `edit 2 s/21/01/2017 e/24/06/2017 t/school`<br>
   Changes task 3 STARTING DATE to 21/01/2017, ENDING DATE to 24/06/2017, tags to school
 
 ### 2.6. Finding all tasks containing any keyword in their task title / description / tags: `find`
@@ -293,8 +293,9 @@ Help         | help
 Add          | add TASK                                                     | add submit report
 Add          | add TASK s/STARTING DATE                                     | add submit report s/24/03/2017
 Add          | add TASK s/STARTING DATE e/ENDING DATE                       | add submit report s/24/03/207 e/27/03/2017
-Add          | add TASK s/STARTING DATE e/ENDING DATE d/Description         | add submit report s/24/03/207 e/27/03/2017 d/assignment 1
-Add          | add TASK s/STARTING DATE e/ENDING DATE d/Description #tags   | add submit report s/24/03/207 e/27/03/2017 d/assignment 1 #school
+Add          | add TASK s/STARTING DATE e/ENDING DATE d/DESCRIPTION         | add submit report s/24/03/207 e/27/03/2017 d/assignment 1
+Add          | add TASK s/STARTING DATE e/ENDING DATE d/DESCRIPTION r/FREQUENCY t/tags   | add submit report s/24/03/207 e/27/03/2017 d/assignment 1 r/ week t/school
+Add          | add TASK s/STARTING DATE e/ENDING DATE d/Description t/tags   | add submit report s/24/03/207 e/27/03/2017 d/assignment 1 t/school
 List         | list
 List         | list KEYWORD                                                 | list todo
 Select       | select INDEX                                                 | select 3
