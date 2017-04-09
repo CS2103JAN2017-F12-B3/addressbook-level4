@@ -1,6 +1,8 @@
 package seedu.taskmanager.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -13,8 +15,8 @@ import seedu.taskmanager.commons.core.UnmodifiableObservableList;
 
 import seedu.taskmanager.model.tag.Tag;
 import seedu.taskmanager.model.tag.UniqueTagList;
-import seedu.taskmanager.model.task.EndDate;
 import seedu.taskmanager.model.task.ReadOnlyTask;
+import seedu.taskmanager.model.task.EndDate;
 import seedu.taskmanager.model.task.Status;
 import seedu.taskmanager.model.task.Task;
 import seedu.taskmanager.model.task.UniqueTaskList;
@@ -28,6 +30,8 @@ public class TaskManager implements ReadOnlyTaskManager {
 
     private final UniqueTaskList tasks;
     private final UniqueTagList tags;
+    
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     /*
      * The 'unusual' code block below is an non-static initialization block,
@@ -192,11 +196,11 @@ public class TaskManager implements ReadOnlyTaskManager {
 
     // @@author A0114523U
     public ObservableList<ReadOnlyTask> getOverdueTaskList() {
-        return new UnmodifiableObservableList<>(tasks.getTaskListByDate(EndDate.today));
+        return new UnmodifiableObservableList<>(tasks.getTaskListByDate(sdf.format(endDate)));
     }
 
     public ObservableList<ReadOnlyTask> getTodayTaskList() {
-        return new UnmodifiableObservableList<>(tasks.getTaskListByDate(EndDate.today));
+        return new UnmodifiableObservableList<>(tasks.getTaskListByDate(sdf.format(endDate)));
     }
     // @@author
 

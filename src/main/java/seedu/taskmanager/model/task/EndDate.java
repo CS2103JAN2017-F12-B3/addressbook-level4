@@ -1,5 +1,6 @@
 package seedu.taskmanager.model.task;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,7 +25,6 @@ public class EndDate extends Date {
     public static final String ENDDATE_VALIDATION_REGEX = "(^$)|(^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4}$)";
     // @@author A0140032E
     public static final LocalTime WORKING_HOUR_END = new LocalTime(18, 0);
-    public static Date today = new Date();
 
     private static final SimpleDateFormat sdfOutput = new SimpleDateFormat("dd/MM/yyyy h:mm a");
     private static final SimpleDateFormat sdfOutputForDateString = new SimpleDateFormat("d MMM yyyy");
@@ -86,6 +86,11 @@ public class EndDate extends Date {
         return sdfOutputForDateString.format(this);
     }
     // @@author
+    
+    // @@author A0114523U
+    public String toStandardDateString() {
+    	return sdfInput.format(this);
+    }
 
     @Override
     public boolean equals(Object other) {
@@ -93,6 +98,10 @@ public class EndDate extends Date {
                 || (other instanceof EndDate // instanceof handles nulls
                         && this.toString().equals(((EndDate) other).toString())); // state
                                                                                   // check
+    }
+    
+    public boolean before(Object other) {
+    	
     }
 
     @Override

@@ -2,6 +2,9 @@ package seedu.taskmanager.model.task;
 
 import static seedu.taskmanager.logic.commands.SortCommand.SORT_KEYWORD_STARTDATE;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
@@ -13,6 +16,12 @@ import javafx.collections.ObservableList;
 import seedu.taskmanager.commons.core.UnmodifiableObservableList;
 import seedu.taskmanager.commons.exceptions.DuplicateDataException;
 import seedu.taskmanager.commons.util.CollectionUtil;
+
+import seedu.taskmanager.model.task.EndDate;
+//import seedu.taskmanager.model.ModelManager.DateQualifier;
+//import seedu.taskmanager.model.ModelManager.Expression;
+//import seedu.taskmanager.model.ModelManager.PredicateExpression;
+//import seedu.taskmanager.model.ModelManager.Qualifier;
 
 /**
  * A list of tasks that enforces uniqueness between its elements and does not
@@ -29,6 +38,9 @@ public class UniqueTaskList implements Iterable<Task> {
     public static final String KEYWORD_UNDEFINED = "undefined";
     private String sortCriterion = KEYWORD_UNDEFINED;
     // @@author
+    
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    public static Date today = new Date();
 
     /**
      * Returns true if the list contains an equivalent task as the given
@@ -204,28 +216,109 @@ public class UniqueTaskList implements Iterable<Task> {
     /**
      * Filters task list based on end date (overdue or due today).
      */
-    public ObservableList<Task> getTaskListByDate(Date endDate) {
-        if (endDate.before(EndDate.today)) {
-            return internalList.filtered(DatePredicate.isOverdue());
-        } else if (endDate.equals(EndDate.today)) {
-            return internalList.filtered(DatePredicate.isToday());
-        } else {
-            return internalList;
-        }
+    public ObservableList<Task> getTaskListByDate(Date today) {
+    	if (sdf.format(endDate).equals(sdf.format(today))) {
+    		return internalList.filtered(DatePredicate.isToday());
+    	}
+//    	else
+    		return internalList;
+//        if (endDate.before(today)) {
+//            return internalList.filtered(DatePredicate.isOverdue());
+//        } else if (endDate.equals(today)) {
+//            return internalList.filtered(DatePredicate.isToday());
+//        } else {
+//        return internalList;
+//        }
     }
 
     static class DatePredicate {
         public static Predicate<Task> isOverdue() {
-            return p -> p.getEndDate().equals(EndDate.today);
+            return p -> p.getEndDate().toStandardDateString().equals(today);
         }
 
         public static Predicate<Task> isToday() {
-            return p -> p.getEndDate().equals(EndDate.today);
+            return p -> p.getEndDate().toStandardDateString().equals(today);
         }
     }
     // @@author
 
-    class DateComparator implements Comparator<Task> {
+    public void updateFilteredTaskList(Date date) {
+        updateFilteredTaskList(new PredicateExpression(new DateQualifier(date)));
+
+    }
+    
+    private void updateFilteredTaskList(Expression expression) {
+    }
+
+	private class PredicateExpression implements Expression {
+
+        private final Qualifier qualifier;
+
+        PredicateExpression(Qualifier qualifier) {
+            this.qualifier = qualifier;
+        }
+
+        @Override
+        public boolean satisfies(ReadOnlyTask task) {
+            return qualifier.run(task);
+        }
+
+        @Override
+        public String toString() {
+            return qualifier.toString();
+        }
+    }
+    
+    interface Qualifier {
+        boolean run(ReadOnlyTask task);
+
+        String toString();
+    }
+    
+    private class DateQualifier implements Qualifier {
+        private LocalDate date;
+
+        DateQualifier(Date date) {
+            this.date = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        }
+
+        @Override
+        public boolean run(ReadOnlyTask task) {
+
+            LocalDate taskStartDate = task.getStartDate().isPresent()
+                    ? task.getStartDate().get().toInstant().atZone(ZoneId.systemDefault()).toLocalDate() : null;
+            LocalDate taskEndDate = task.getEndDate().isPresent()
+                    ? task.getEndDate().get().toInstant().atZone(ZoneId.systemDefault()).toLocalDate() : null;
+
+            boolean isFloatingTask = !(task.getStartDate().isPresent() || task.getEndDate().isPresent());
+            if (isFloatingTask) {
+                return false;
+            }
+            if (task.getStartDate().isPresent() && task.getEndDate().isPresent()) {
+
+                return !(taskStartDate.isAfter(date) || taskEndDate.isBefore(date));
+            }
+            if (task.getStartDate().isPresent()) {
+                return !(taskStartDate.isAfter(date));
+            }
+            return !(taskEndDate.isBefore(date));
+        }
+
+        @Override
+        public String toString() {
+            return "date=" + date.toString();
+        }
+    }
+    
+    interface Expression {
+        boolean satisfies(ReadOnlyTask task);
+
+        String toString();
+    }
+    
+    //
+
+	class DateComparator implements Comparator<Task> {
         String sortCriterion;
 
         public DateComparator(String sortCriterion) {
