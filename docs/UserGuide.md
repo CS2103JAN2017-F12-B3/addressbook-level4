@@ -41,9 +41,10 @@ Format: `help`
 ### 2.2. Adding a task : `add`
 
 Adds a task to FuntaskTic.<br>
-Format: `add TASK s/STARTING_DATE_TIME e/ENDING_DATE_TIME d/Description t/tags`
+Format: `add TASK s/STARTING_DATE_TIME e/ENDING_DATE_TIME r/FREQUENCY d/Description t/tags`
 
 > Only Task title is a compulsory field.<br>
+> For recurring tasks starting date is compulsory.<br> 
 > Tasks can have any number of tags (including none).<br>
 > Tasks with date specified without time will have the time defaulted to the current time.<br>
 > Tasks with time specified without date will have the date defaulted to the current date.<br>
@@ -90,7 +91,7 @@ Examples:
   `select 1`<br>
   Selects the 1st task in the results of the `find` command.
 
-### 2.5. Editing a task : `edit`
+### 2.5. Editing a task : `edit` or `change`
 
 Edits an existing task in FunTaskTic.<br>
 The tasks can be edited through the index from a list.<br>
