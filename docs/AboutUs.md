@@ -49,7 +49,6 @@ We are a team based in the [School of Computing, National University of Singapor
 <img src="images/shenqit.png" width="150"><br>
 * Components in charge of: [UI](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/docs/DeveloperGuide.md#22-ui-component)
 * Aspects/tools in charge of: Testing
-* Features implemented:
 * Code written: [[functional code](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/collated/main/A0114523U.md)][[test code](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/collated/test/A0114523U.md)]
 * Other major contributions:
   * Did modification for UI
