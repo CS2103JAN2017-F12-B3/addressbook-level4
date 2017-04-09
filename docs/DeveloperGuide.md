@@ -139,7 +139,7 @@ The sections below give more details of each component.
 
 ### 2.2. UI component
 
-Author: Shen Qi
+Author: Shenqi
 
 <img src="images/UiComponentClassDiagram.png" width="600"><br>
 _Figure 2.2.1 : Structure of the UI Component_
