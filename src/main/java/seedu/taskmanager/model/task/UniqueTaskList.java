@@ -2,7 +2,9 @@ package seedu.taskmanager.model.task;
 
 import static seedu.taskmanager.logic.commands.SortCommand.SORT_KEYWORD_STARTDATE;
 
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
@@ -50,9 +52,11 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public void add(Task toAdd) throws DuplicateTaskException {
         assert toAdd != null;
-        if (contains(toAdd)) {
+        // @@author A0114269E
+        if ((toAdd.getStatus().value == false) && contains(toAdd)) {
             throw new DuplicateTaskException();
         }
+        // @@author
         internalList.add(toAdd);
         // @@author A0131278H
         if (!sortCriterion.equals(KEYWORD_UNDEFINED)) {
@@ -78,17 +82,14 @@ public class UniqueTaskList implements Iterable<Task> {
         assert editedTask != null;
 
         Task taskToUpdate = internalList.get(index);
-        if (!taskToUpdate.equals(editedTask) && internalList.contains(editedTask)) {
+        // @@author A0114269E
+        if ((editedTask.getStatus().value == false) && !taskToUpdate.equals(editedTask)
+                && internalList.contains(editedTask)) {
             throw new DuplicateTaskException();
         }
+        // @@author
 
         taskToUpdate.resetData(editedTask);
-        // TODO: The code below is just a workaround to notify observers of the
-        // updated task.
-        // The right way is to implement observable properties in the Task
-        // class.
-        // Then, TaskCard should then bind its text labels to those observable
-        // properties.
         internalList.set(index, taskToUpdate);
         // @@author A0131278H
         if (!sortCriterion.equals(KEYWORD_UNDEFINED)) {
@@ -188,6 +189,22 @@ public class UniqueTaskList implements Iterable<Task> {
         }
     }
 
+    // @@author A0114523U
+    /**
+     * Filters task list to show overdue tasks
+     */
+    public ObservableList<Task> getTodayTaskList(Date today) {
+        return internalList.filtered(TodayTaskPredicate.dueToday(today));
+    }
+
+    /**
+     * Filters task list to show overdue tasks
+     */
+    public ObservableList<Task> getOverdueTaskList(Date today) {
+        return internalList.filtered(OverdueTaskPredicate.overdue(today));
+    }
+
+    // ========== Inner classes/interfaces used for filtering and comparison
     static class StatusPredicate {
 
         public static Predicate<Task> isDone() {
@@ -197,8 +214,27 @@ public class UniqueTaskList implements Iterable<Task> {
         public static Predicate<Task> isNotDone() {
             return p -> p.getStatus().toString().equals(Status.STATUS_NOT_DONE);
         }
+    }
+
+    static class OverdueTaskPredicate {
+
+        public static Predicate<Task> overdue(Date today) {
+            return p -> p.getEndDate().isPresent() && !p.getStatus().value ?
+                    p.getEndDate().get().before(today) : false;
+        }
 
     }
+
+    static class TodayTaskPredicate {
+
+        public static Predicate<Task> dueToday(Date today) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            return p -> p.getEndDate().isPresent() && !p.getStatus().value
+                    ? sdf.format(today).equals(sdf.format(p.getEndDate().get())) : false;
+        }
+
+    }
+    // @@author A0131278H
 
     class DateComparator implements Comparator<Task> {
         String sortCriterion;

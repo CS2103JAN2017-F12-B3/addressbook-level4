@@ -9,6 +9,7 @@ import seedu.taskmanager.model.tag.UniqueTagList;
 import seedu.taskmanager.model.task.Description;
 import seedu.taskmanager.model.task.EndDate;
 import seedu.taskmanager.model.task.ReadOnlyTask;
+import seedu.taskmanager.model.task.Repeat;
 import seedu.taskmanager.model.task.StartDate;
 import seedu.taskmanager.model.task.Status;
 import seedu.taskmanager.model.task.Task;
@@ -50,14 +51,14 @@ public class UndoneCommand extends Command {
 
         ReadOnlyTask taskToMarkUndone = lastShownList.get(targetIndex - 1);
         if (taskToMarkUndone.getStatus().value) {
-            Task markedUndoneTask = createDoneTask(taskToMarkUndone);
+            Task markedUndoneTask = createUndoneTask(taskToMarkUndone);
             try {
                 model.updateTask(targetIndex - 1, markedUndoneTask);
             } catch (UniqueTaskList.DuplicateTaskException dpe) {
                 throw new CommandException(MESSAGE_DUPLICATE_TASK);
             }
         } else {
-            return new CommandResult(String.format(MESSAGE_MARK_UNDONE_TASK_FAILURE, taskToMarkUndone));
+            throw new CommandException(String.format(MESSAGE_MARK_UNDONE_TASK_FAILURE, taskToMarkUndone));
         }
         model.updateFilteredListToShowAll();
 
@@ -67,18 +68,19 @@ public class UndoneCommand extends Command {
     /**
      * Creates and returns a {@code Task} with the status marked done
      */
-    private static Task createDoneTask(ReadOnlyTask taskToMarkUndone) {
+    private static Task createUndoneTask(ReadOnlyTask taskToMarkUndone) {
         assert taskToMarkUndone != null;
 
         Title updatedTitle = taskToMarkUndone.getTitle();
         Optional <StartDate> updatedStartDate = taskToMarkUndone.getStartDate();
         Optional <EndDate> updatedEndDate = taskToMarkUndone.getEndDate();
         Optional <Description> updatedDescription = taskToMarkUndone.getDescription();
+        Optional <Repeat> updatedRepeat = taskToMarkUndone.getRepeat();
         Status updatedStatus = new Status(false);
         UniqueTagList updatedTags = taskToMarkUndone.getTags();
 
-        return new Task(updatedTitle, updatedStartDate, updatedEndDate, updatedDescription, updatedStatus,
-                updatedTags);
+        return new Task(updatedTitle, updatedStartDate, updatedEndDate, updatedDescription,
+                updatedRepeat, updatedStatus, updatedTags);
     }
 }
 // @@author

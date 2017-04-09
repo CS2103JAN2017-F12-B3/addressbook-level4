@@ -6,28 +6,26 @@ import java.util.Optional;
 import seedu.taskmanager.commons.core.Config;
 import seedu.taskmanager.commons.exceptions.DataConversionException;
 import seedu.taskmanager.commons.util.ConfigUtil;
-import seedu.taskmanager.commons.util.StringUtil;
 import seedu.taskmanager.logic.commands.exceptions.CommandException;
 import seedu.taskmanager.model.ReadOnlyTaskManager;
 
 // @@author A0114269E
 /**
  * Saves the current Task Manager to an XML file at user-specified path.
- * Overwrites the given file path if a file with same name exists. Old XML file is not deleted.
- * Path matching is case sensitive.
+ * Overwrites the given file path if a file with same name exists. Old XML file
+ * is not deleted. Path matching is case sensitive.
  */
 public class SaveAsCommand extends Command {
     public static final String COMMAND_WORD = "saveas";
     public static final String ALTERNATIVE_COMMAND_WORD = "save";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Save the current taskmanager to given directory "
-            + "to allow user to sync with cloud services. Overwrites existing file name.\n"
-            + "Parameters: PATH...\n"
+            + "to allow user to sync with cloud services. Overwrites existing file name.\n" + "Parameters: PATH...\n"
             + "Example: " + COMMAND_WORD + " /User/admin/Documents/taskmanager.xml";
 
-    public static final String MESSAGE_SUCCESS = "TaskManager directory saved to : ";
+    public static final String MESSAGE_SUCCESS = "TaskManager directory saved to : %1$s";
     public static final String MESSAGE_ERROR_BUILDCONFIG = "Failed to build new config";
-    public static final String MESSAGE_ERROR_SAVE = "Failed to save TaskManager : '%1$s'";
+    public static final String MESSAGE_ERROR_IO = "Failed to save TaskManager.";
 
     private final String newPath;
 
@@ -51,14 +49,17 @@ public class SaveAsCommand extends Command {
         newConfig.setTaskManagerFilePath(this.newPath);
         storage.updateTaskManagerStorageDirectory(this.newPath, newConfig);
         ReadOnlyTaskManager newTaskManager = model.getTaskManager();
+        String oldStorageDirectory = storage.getTaskManagerFilePath();
 
         try {
             storage.saveTaskManager(newTaskManager);
             ConfigUtil.saveConfig(newConfig, configFilePathUsed);
         } catch (IOException e) {
-            throw new CommandException(MESSAGE_ERROR_SAVE + StringUtil.getDetails(e));
+            newConfig.setTaskManagerFilePath(oldStorageDirectory);
+            storage.updateTaskManagerStorageDirectory(oldStorageDirectory, newConfig);
+            throw new CommandException(MESSAGE_ERROR_IO);
         }
 
-        return new CommandResult(MESSAGE_SUCCESS + this.newPath);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, this.newPath));
     }
 }

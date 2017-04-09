@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<taskmanager>
+    <tasks>
+        <title>Visit Alex Yeoh</title>
+        <startDate>1 Nov 2017 12:00 AM</startDate>
+        <endDate>2 Nov 2017 12:00 AM</endDate>
+        <description>His address is Blk 30 Geylang Street 29, #06-40</description>
+        <repeat>DAY</repeat>
+        <status>Incomplete</status>
+        <tagged>social</tagged>
+    </tasks>
+    <tasks>
+        <title>Collect files from boss</title>
+        <startDate>5 Nov 2017 12:00 AM</startDate>
+        <endDate>8 Nov 2017 12:00 AM</endDate>
+        <description>Important business files</description>
+        <status>Incomplete</status>
+        <tagged>business</tagged>
+        <tagged>colleagues</tagged>
+    </tasks>
+    <tasks>
+        <title>Visit Charlotte Oliveiro</title>
+        <startDate>20 Dec 2017 12:00 AM</startDate>
+        <endDate>20 Dec 2017 12:00 AM</endDate>
+        <description>Her address is Blk 11 Ang Mo Kio Street 74, #11-04</description>
+        <repeat>MONTH</repeat>
+        <status>Incomplete</status>
+        <tagged>social</tagged>
+    </tasks>
+    <tasks>
+        <title>Call David Li</title>
+        <startDate>8 Aug 2017 12:00 AM</startDate>
+        <endDate>10 Aug 2017 12:00 AM</endDate>
+        <description>his number is 12345678</description>
+        <repeat>YEAR</repeat>
+        <status>Incomplete</status>
+        <tagged>schoolwork</tagged>
+    </tasks>
+    <tasks>
+        <title>Submit project report</title>
+        <startDate>20 Jul 2017 12:00 AM</startDate>
+        <endDate>21 Jul 2017 12:00 AM</endDate>
+        <description>Submit to tutor in class</description>
+        <status>Incomplete</status>
+        <tagged>schoolwork</tagged>
+    </tasks>
+    <tags>social</tags>
+    <tags>colleagues</tags>
+    <tags>business</tags>
+    <tags>schoolwork</tags>
+</taskmanager>

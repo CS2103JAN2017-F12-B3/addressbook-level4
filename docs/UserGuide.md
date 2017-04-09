@@ -1,4 +1,4 @@
-# Task Manager - User Guide
+# FunTaskTic - User Guide
 
 By : `F12-B3`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&nbsp;&nbsp; Licence: `MIT`
 
@@ -16,10 +16,10 @@ By : `F12-B3`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&nbsp;&nb
    > Having any Java 8 version is not enough. <br>
    > This app will not work with earlier versions of Java 8.
 
-1. Download the latest `taskmanager.jar` from the [releases](../../../releases) tab.
+1. Download the latest `funtasktic.jar` from the [releases](../../../releases) tab.
 2. Copy the file to the folder you want to use as the home folder for your Task manager.
 3. Double-click the file to start the app. The GUI should appear in a few seconds.
-   > <img src="images/uiv0.0.png" width="600">
+   <img src="images/uiv0.5rc.png" width="600">
 
 4. Type the command in the command box and press <kbd>Enter</kbd> to execute it. <br>
    e.g. typing **`help`** and pressing <kbd>Enter</kbd> will open the help window.
@@ -35,18 +35,16 @@ By : `F12-B3`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&nbsp;&nb
 
 ### 2.1. Viewing help : `help`
 
+Shows a command guide in a new window.
 Format: `help`
-
-> Help is also shown if you enter an incorrect command e.g. `abcd`
-
-A command guide will be shown in the window
 
 ### 2.2. Adding a task : `add`
 
-Adds a task to the task manager.<br>
-Format: `add TASK s/STARTING_DATE_TIME e/ENDING_DATE_TIME d/Description #tags`
+Adds a task to FuntaskTic.<br>
+Format: `add TASK s/STARTING_DATE_TIME e/ENDING_DATE_TIME r/FREQUENCY d/Description t/tags`
 
 > Only Task title is a compulsory field.<br>
+> For recurring tasks starting date is compulsory.<br> 
 > Tasks can have any number of tags (including none).<br>
 > Tasks with date specified without time will have the time defaulted to the current time.<br>
 > Tasks with time specified without date will have the date defaulted to the current date.<br>
@@ -54,15 +52,30 @@ Format: `add TASK s/STARTING_DATE_TIME e/ENDING_DATE_TIME d/Description #tags`
 
 Examples:
 
-* `add submit report e/29/07/2017 3pm d/Assignment 1 #academic`
-* `add read Harry Potter s/12 March 2017 1300 e/15 December 2017 d/chapter 5 #personal`
-* `add do homework s/today e/tmr #urgent`
+* `add submit report e/29/07/2017 3pm d/Assignment 1 t/academic`
+* `add read Harry Potter s/12 March 2017 1300 e/christmas d/chapter 5 t/personal`
+* `add do homework s/today 5pm e/tmr 1800 t/urgent`
 * `add buy groceries`
 
-### 2.3. Listing all tasks : `list`
+### 2.3. Listing tasks : `list`
 
-Shows a list of all tasks in the task manager.<br>
-Format: `list`
+Shows a list of tasks in FunTaskTic.<br>
+Format: `list KEYWORD`
+
+> Lists tasks according to the input `KEYWORD`.<br>
+> Automatically switches between `To Do` and `Done` tabs according to the `KEYWORD`.<br>
+> The keyword refers to `todo` for all tasks to do or `done` for all done tasks.<br>
+> Invalid keyword will trigger listing all tasks in the selected tab by default.<br>
+> Any trailing symbols after a valid keyword will be ignored.
+
+Examples:
+
+* `list todo`<br>
+   Selects `To Do` tab and list all the tasks to do
+* `list done`<br>
+   Selects `Done` tab and list all the tasks already done
+* `list`<br>
+   Stays in selected tab and list all its tasks
 
 ### 2.4. Select a task : `select`
 
@@ -78,9 +91,9 @@ Examples:
   `select 1`<br>
   Selects the 1st task in the results of the `find` command.
 
-### 2.5. Editing a task : `edit`
+### 2.5. Editing a task : `edit` or `change`
 
-Edits an existing task in the task manager.<br>
+Edits an existing task in FunTaskTic.<br>
 The tasks can be edited through the index from a list.<br>
 Multiple fields in a task can be edited at once.<br>
 Format: `edit INDEX COMPONENT(s)`
@@ -94,24 +107,24 @@ Examples:
 
 ### 2.6. Finding all tasks containing any keyword in their task title / description / tags: `find`
 
-Finds a task with the given keyword.<br>
+Finds a task with fields containing the given keyword.<br>
 Supports partial matching and tolerance for misspelled keywords.<br>
 Format: `find KEYWORD`
 
 Examples:
 
 * `find report`<br>
-  Returns `submit report`  `print report` `#report` etc. in the column
+  Returns `submit report`  `print report` `t/report` etc. in the column
 * `find schoolwork sports`<br>
-  Returns `do schoolwork`  `play sports` `#schoolwork` `#sports` etc. in the column
+  Returns `do schoolwork`  `play sports` `d/schoolwork` `d/sports` `t/schoolwork` `t/sports` etc. in the column
 * `find work`<br>
-  Returns `do schoolwork`  `do homework` `#schoolwork` `#workfile` etc. in the column
+  Returns `do schoolwork`  `do homework` `d/schoolwork` `d/workfile` `t/schoolwork` `t/workfile` etc. in the column
 * `find werk`<br>
-  Returns `do schoolwork`  `do homework` `#schoolwork` `#workfile` etc. in the column
+  Returns `do schoolwork`  `do homework` `d/schoolwork` `d/workfile` `t/schoolwork` `t/workfile` etc. in the column
 
 ### 2.7. Deleting a task : `delete` or `remove`
 
-Deletes the specified task from the task manager.<br>
+Deletes the specified task from FunTaskTic.<br>
 Format: `delete INDEX` `remove INDEX`
 
 > Deletes the task at the specified `INDEX`.<br>
@@ -146,7 +159,7 @@ Examples:
 
 ### 2.9. Clearing all entries : `clear`
 
-Clears all entries from the task manager.<br>
+Clears all entries from FunTaskTic.<br>
 Format: `clear`
 
 ### 2.10. Exiting the program : `exit`
@@ -156,12 +169,12 @@ Format: `exit`
 
 ### 2.11. Saving the data
 
-Task Manager data are saved in the hard disk automatically after any command that changes the data.<br>
+FunTaskTic data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.
 
-### 2.12. Change the directory of the task manager : `load` or `open`
+### 2.12. Changing the directory of the task manager : `load` or `open`
 
-Load Task Manager data from specified file path and continue using that directory for operations.<br>
+Load FunTaskTic data from specified file path and continue using that directory for operations.<br>
 Create new file if no such file exists with a warning.<br>
 Cancel operations if given non-XML address or invalid XML file.<br>
 Default file path is at data/taskmanager.xml.<br>
@@ -174,10 +187,10 @@ Examples:
 * `open data/new/cloudsync.xml`<br>
   Changes the Storage Directory to ./data/new/cloudsync.xml
 
-### 2.13. Save the task manager to a specified directory: `save` or  `saveas`
+### 2.13. Saving the task manager to a specified directory: `save` or  `saveas`
 
-Save Task Manager data to specified file path and continue using that directory for operations.<br>
-If existing file with the same name exists, it will be overwritten with current Task Manager data.<br>
+Save FunTaskTic data to specified file path and continue using that directory for operations.<br>
+If existing file with the same name exists, it will be overwritten with current FunTaskTic data.<br>
 Default file path is at data/taskmanager.xml.<br>
 Format: `save FILEPATH` `saveas FILEPATH`
 
@@ -188,7 +201,7 @@ Examples:
 * `saveas data/new/cloudsync.xml`<br>
   Moves the Storage Directory to ./data/new/cloudsync.xml
 
-### 2.14. Undo the last user command that changes data: `undo`
+### 2.14. Undoing the last user command that changes data: `undo`
 
 Undo the last user command in that user session that changes data, i.e. add, edit, delete, clear, sort.<br>
 Does nothing if there are no more previous user commands.
@@ -203,7 +216,7 @@ Examples:
   `undo`<br>
   Undoes last user command that changes data, i.e `add New task`. Removes New task
 
-### 2.15. Redo the last undo command: `redo`
+### 2.15. Redoing the last undo command: `redo`
 
 Redo the last undo command by user<br>
 Does nothing if there are no commands to redo that the user has undone
@@ -220,7 +233,7 @@ Examples:
   `redo`<br>
   Redoes last user command in undo history, i.e `add New task`. Adds New task
 
-### 2.16. Find tasks by date: `findbydate`
+### 2.16. Finding tasks by date: `findbydate`
 
 Find tasks that are within the specified date(s).<br>
 Format: `findbydate DATE` `findbydate DATE to DATE`
@@ -244,12 +257,12 @@ Format: `done INDEX` `complete INDEX` `finish INDEX`
 Examples:
 
 * `done 1`<br>
-   Mark the task with index 1 in the Task Manager as done
+   Mark the task with index 1 in FunTaskTic as done
 * `complete 2`<br>
-   Mark the task with index 2 in the Task Manager as done
+   Mark the task with index 2 in FunTaskTic as done
 * `finish 3`<br>
-   Mark the task with index 3 in the Task Manager as done
-   
+   Mark the task with index 3 in FunTaskTic as done
+
 ### 2.18. Marking a task as TODO : `undone` or `revert`
 
 Marks the specified task from the task manager as TODO from being DONE initially.<br>
@@ -262,9 +275,9 @@ Format: `undone INDEX` `revert INDEX`
 Examples:
 
 * `undone 1`<br>
-   Mark the task with index 1 in the Task Manager as done
+   Mark the task with index 1 in FunTaskTic as done
 * `revert 3`<br>
-   Mark the task with index 3 in the Task Manager as done
+   Mark the task with index 3 in FunTaskTic as done
 
 ## 3. FAQ
 
@@ -276,26 +289,27 @@ Examples:
 
 Command | Syntax | Example
 ------- | ------ | -------
-Help    | help
-Add     | add TASK | add submit report
-Add     | add TASK s/STARTING DATE | add submit report s/24/03/2017
-Add     | add TASK s/STARTING DATE e/ENDING DATE    | add submit report s/24/03/207 e/27/03/2017
-Add     | add TASK s/STARTING DATE e/ENDING DATE d/Description   | add submit report s/24/03/207 e/27/03/2017 d/assignment 1
-Add     | add TASK s/STARTING DATE e/ENDING DATE d/Description #tags   | add submit report s/24/03/207 e/27/03/2017 d/assignment 1 #school
-List    | list
-Select  | select INDEX                    | select 3
-Edit    | edit INDEX COMPONENT            | edit 3 e/04/04/2017
-Find    | find KEYWORD(s)                 | find report assignment
-Find by Date | findbydate DATE | findbydate today
-Find by Date | findbydate DATE to DATE | findbydate today to next wednesday
-Delete  | delete INDEX                    | delete 3
-Sort    | sort KEYWORD                    | sort e/
-Undo    | undo
-Redo    | redo
-Done    | done INDEX                      | done 1
-Undone  | undone INDEX                    | undone 2
-Save as | saveas FILEPATH                 | saveas newtaskmanager.xml
-Load    | load FILEPATH                   | load /Users/admin/taskmanager.xml
-Clear   | clear
-Exit    | exit
+Help         | help
+Add          | add TASK                                                     | add submit report
+Add          | add TASK s/STARTING DATE                                     | add submit report s/24/03/2017
+Add          | add TASK s/STARTING DATE e/ENDING DATE                       | add submit report s/24/03/207 e/27/03/2017
+Add          | add TASK s/STARTING DATE e/ENDING DATE d/Description         | add submit report s/24/03/207 e/27/03/2017 d/assignment 1
+Add          | add TASK s/STARTING DATE e/ENDING DATE d/Description #tags   | add submit report s/24/03/207 e/27/03/2017 d/assignment 1 #school
+List         | list
+List         | list KEYWORD                                                 | list todo
+Select       | select INDEX                                                 | select 3
+Edit         | edit INDEX COMPONENT(s)                                      | edit 3 e/04/04/2017
+Find         | find KEYWORD(s)                                              | find report assignment
+Find by Date | findbydate DATE                                              | findbydate today
+Find by Date | findbydate DATE to DATE                                      | findbydate today to next wednesday
+Delete       | delete INDEX                                                 | delete 3
+Sort         | sort KEYWORD                                                 | sort e/
+Undo         | undo
+Redo         | redo
+Done         | done INDEX                                                   | done 1
+Undone       | undone INDEX                                                 | undone 2
+Save as      | saveas FILEPATH                                              | saveas newtaskmanager.xml
+Load         | load FILEPATH                                                | load /Users/admin/taskmanager.xml
+Clear        | clear
+Exit         | exit
 <br>

@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.taskmanager.logic.commands.AddCommand;
-import seedu.taskmanager.logic.commands.ChangeDirectoryCommand;
 import seedu.taskmanager.logic.commands.ClearCommand;
 import seedu.taskmanager.logic.commands.Command;
 import seedu.taskmanager.logic.commands.DeleteCommand;
@@ -19,6 +18,7 @@ import seedu.taskmanager.logic.commands.FindDateCommand;
 import seedu.taskmanager.logic.commands.HelpCommand;
 import seedu.taskmanager.logic.commands.IncorrectCommand;
 import seedu.taskmanager.logic.commands.ListCommand;
+import seedu.taskmanager.logic.commands.LoadCommand;
 import seedu.taskmanager.logic.commands.RedoCommand;
 import seedu.taskmanager.logic.commands.SaveAsCommand;
 import seedu.taskmanager.logic.commands.SelectCommand;
@@ -34,7 +34,7 @@ public class Parser {
     /**
      * Used for initial separation of command word and args.
      */
-    private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
+    public static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
 
     /**
      * Parses user input into command for execution.
@@ -78,7 +78,7 @@ public class Parser {
             return new FindCommandParser().parse(arguments);
 
         case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+            return new ListCommandParser().parse(arguments);
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
@@ -86,11 +86,11 @@ public class Parser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
-        case ChangeDirectoryCommand.COMMAND_WORD:
-            return new ChangeDirectoryCommandParser().parse(arguments);
+        case LoadCommand.COMMAND_WORD:
+            return new LoadCommandParser().parse(arguments);
 
-        case ChangeDirectoryCommand.ALTERNATIVE_COMMAND_WORD:
-            return new ChangeDirectoryCommandParser().parse(arguments);
+        case LoadCommand.ALTERNATIVE_COMMAND_WORD:
+            return new LoadCommandParser().parse(arguments);
 
         case DoneCommand.COMMAND_WORD:
             return new DoneCommandParser().parse(arguments);
@@ -114,10 +114,10 @@ public class Parser {
             return new RedoCommand();
 
         case SaveAsCommand.COMMAND_WORD:
-            return new MoveCommandParser().parse(arguments);
+            return new SaveAsCommandParser().parse(arguments);
 
         case SaveAsCommand.ALTERNATIVE_COMMAND_WORD:
-            return new MoveCommandParser().parse(arguments);
+            return new SaveAsCommandParser().parse(arguments);
 
         case SortCommand.COMMAND_WORD:
             return new SortCommandParser().parse(arguments);
@@ -129,5 +129,19 @@ public class Parser {
             return new IncorrectCommand(MESSAGE_UNKNOWN_COMMAND);
         }
     }
-
+//    // @@author A0131278H
+//    /**
+//     * Parses user input into command without execution.
+//     *
+//     * @param commandText
+//     *            full command text
+//     */
+//    public static void parseWithoutExecution(String commandText) {
+//        final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(commandText.trim());
+//        assert matcher.matches();
+//        final String commandWord = matcher.group("commandWord");
+//        final String arguments = matcher.group("arguments");
+//
+//    }
+//    // @@author
 }

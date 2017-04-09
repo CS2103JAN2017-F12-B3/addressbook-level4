@@ -2,17 +2,16 @@ package seedu.taskmanager.commons.events.ui;
 
 import seedu.taskmanager.commons.events.BaseEvent;
 
+// @@author A0131278H
 /**
- * Indicates a request to jump to the list of tasks
+ * Represents a selection change in the Task List Tab Pane
  */
-public class JumpToListRequestEvent extends BaseEvent {
+public class TabSelectionChangedEvent extends BaseEvent {
 
     public final int targetIndex;
-    public final boolean isSelectCommand;
 
-    public JumpToListRequestEvent(int targetIndex, boolean isSelectCommand) {
+    public TabSelectionChangedEvent(int targetIndex) {
         this.targetIndex = targetIndex;
-        this.isSelectCommand = isSelectCommand;
     }
 
     @Override
@@ -21,3 +20,4 @@ public class JumpToListRequestEvent extends BaseEvent {
     }
 
 }
+// @@author

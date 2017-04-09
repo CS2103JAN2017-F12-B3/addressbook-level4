@@ -32,6 +32,14 @@ public interface Model {
      * Sorts task list based on keywords (startdate or enddate).
      */
     void sortTasks(String keyword);
+
+    /**
+     * highlights changed task in task list.
+     */
+    void highlightTask(ReadOnlyTask task);
+
+    /** Returns the current tab selected. */
+    String getSelectedTab();
     // @@author
 
     /**
@@ -52,6 +60,20 @@ public interface Model {
      * {@code UnmodifiableObservableList<ReadOnlyTask>}
      */
     UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList();
+
+    // @@author A0114523U
+    /**
+     * Returns the list of overdue task as an
+     * {@code UnmodifiableObservableList<ReadOnlyTask>}
+     */
+    UnmodifiableObservableList<ReadOnlyTask> getFilteredOverdueTaskList();
+
+    /**
+     * Returns the list of today's task as an
+     * {@code UnmodifiableObservableList<ReadOnlyTask>}
+     */
+    UnmodifiableObservableList<ReadOnlyTask> getFilteredTodayTaskList();
+    // @@author
 
     // @@author A0131278H
 
@@ -96,6 +118,8 @@ public interface Model {
     // @@author A0131278H
     /** Sets the currently selected tab in model */
     void setSelectedTab(String selectedTab);
-    // @@author
 
+    /** Raises an event to indicate the model has changed */
+    public void indicateJumpToListRequestEvent(int index);
+    // @@author
 }

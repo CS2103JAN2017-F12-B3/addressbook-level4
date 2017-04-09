@@ -13,6 +13,7 @@ import seedu.taskmanager.commons.events.model.TaskManagerChangedEvent;
 import seedu.taskmanager.commons.events.storage.DataSavingExceptionEvent;
 import seedu.taskmanager.commons.events.storage.TaskManagerStorageDirectoryChangedEvent;
 import seedu.taskmanager.commons.exceptions.DataConversionException;
+import seedu.taskmanager.commons.util.StringUtil;
 import seedu.taskmanager.model.ReadOnlyTaskManager;
 import seedu.taskmanager.model.UserPrefs;
 
@@ -112,7 +113,11 @@ public class StorageManager extends ComponentManager implements Storage {
         try {
             saveTaskManager(event.data);
         } catch (IOException e) {
+            // @@author A0114269E
             raise(new DataSavingExceptionEvent(e));
+            logger.warning("IOException: Problem saving to given directory!" +
+                    StringUtil.getDetails(e));
+            // @@author
         }
     }
 
