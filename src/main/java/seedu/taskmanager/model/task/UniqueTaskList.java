@@ -188,6 +188,22 @@ public class UniqueTaskList implements Iterable<Task> {
             return internalList; // return list of all task if status is invalid
         }
     }
+
+    // @@author A0114523U
+    /**
+     * Filters task list to show overdue tasks
+     */
+    public ObservableList<Task> getTodayTaskList(Date today) {
+        return internalList.filtered(TodayTaskPredicate.dueToday(today));
+    }
+
+    /**
+     * Filters task list to show overdue tasks
+     */
+    public ObservableList<Task> getOverdueTaskList(Date today) {
+        return internalList.filtered(OverdueTaskPredicate.overdue(today));
+    }
+
     // ========== Inner classes/interfaces used for filtering and comparison
     static class StatusPredicate {
 
@@ -200,14 +216,6 @@ public class UniqueTaskList implements Iterable<Task> {
         }
     }
 
-    // @@author A0114523U
-    /**
-     * Filters task list to show overdue tasks
-     */
-    public ObservableList<Task> getOverdueTaskList(Date today) {
-        return internalList.filtered(OverdueTaskPredicate.overdue(today));
-    }
-
     static class OverdueTaskPredicate {
 
         public static Predicate<Task> overdue(Date today) {
@@ -215,13 +223,6 @@ public class UniqueTaskList implements Iterable<Task> {
                     p.getEndDate().get().before(today) : false;
         }
 
-    }
-
-    /**
-     * Filters task list to show overdue tasks
-     */
-    public ObservableList<Task> getTodayTaskList(Date today) {
-        return internalList.filtered(TodayTaskPredicate.dueToday(today));
     }
 
     static class TodayTaskPredicate {
@@ -233,8 +234,8 @@ public class UniqueTaskList implements Iterable<Task> {
         }
 
     }
-    // @@author
-    
+    // @@author A0131278H
+
     class DateComparator implements Comparator<Task> {
         String sortCriterion;
 
