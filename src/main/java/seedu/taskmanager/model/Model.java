@@ -61,7 +61,7 @@ public interface Model {
      * Returns the list of overdue task as an
      * {@code UnmodifiableObservableList<ReadOnlyTask>}
      */
-    UnmodifiableObservableList<ReadOnlyTask> getFilteredOverdueTaskList();
+//    UnmodifiableObservableList<ReadOnlyTask> getFilteredOverdueTaskList();
 
     /**
      * Returns the list of today's task as an

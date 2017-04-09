@@ -2,6 +2,7 @@ package seedu.taskmanager.model.task;
 
 import static seedu.taskmanager.logic.commands.SortCommand.SORT_KEYWORD_STARTDATE;
 
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
@@ -13,6 +14,9 @@ import javafx.collections.ObservableList;
 import seedu.taskmanager.commons.core.UnmodifiableObservableList;
 import seedu.taskmanager.commons.exceptions.DuplicateDataException;
 import seedu.taskmanager.commons.util.CollectionUtil;
+import seedu.taskmanager.model.Model;
+
+import seedu.taskmanager.model.task.EndDate;
 
 /**
  * A list of tasks that enforces uniqueness between its elements and does not
@@ -28,6 +32,11 @@ public class UniqueTaskList implements Iterable<Task> {
     // @@author A0131278H
     public static final String KEYWORD_UNDEFINED = "undefined";
     private String sortCriterion = KEYWORD_UNDEFINED;
+    // @@author
+    
+    // @@author A0114523U
+    private static final SimpleDateFormat sdfInput = new SimpleDateFormat("dd/MM/yyyy");
+    private static Date today = new Date();
     // @@author
 
     /**
@@ -209,25 +218,33 @@ public class UniqueTaskList implements Iterable<Task> {
     /**
      * Filters task list based on end date (overdue or due today).
      */
-    public ObservableList<Task> getTaskListByDate(Date endDate) {
-        if (endDate.before(EndDate.today)) {
-            return internalList.filtered(DatePredicate.isOverdue());
-        } else if (endDate.equals(EndDate.today)) {
-            return internalList.filtered(DatePredicate.isToday());
-        } else {
-            return internalList;
-        }
+    public ObservableList<Task> getTaskListByDate(Date today) {
+//    	if (EndDate.equals(today)) {
+//    		updateFilteredTaskList(today);
+//    		return internalList.filtered(DatePredicate.isToday());
+//    	}
+    	return internalList;
     }
+//        if (endDate.before(today)) {
+//        	Model.updateFilteredTaskList(today);
+//            return internalList.filtered(DatePredicate.isOverdue());
+//        } 
+//       else if (endDate.equals(today)) {
+//            return internalList.filtered(DatePredicate.isToday());
+//        } else {
+//            return internalList;
+//       }
+//    }
 
     static class DatePredicate {
-        public static Predicate<Task> isOverdue() {
-            return p -> p.getEndDate().equals(EndDate.today);
-        }
+//        public static Predicate<Task> isOverdue() {
+//            return p -> p.getEndDate().equals(today);
+//        }
 
         public static Predicate<Task> isToday() {
-            return p -> p.getEndDate().equals(EndDate.today);
+            return p -> p.getEndDate().equals(today);
         }
-    }
+   }
     // @@author
 
     class DateComparator implements Comparator<Task> {

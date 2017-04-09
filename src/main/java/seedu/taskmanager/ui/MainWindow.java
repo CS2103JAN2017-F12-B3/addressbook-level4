@@ -147,7 +147,7 @@ public class MainWindow extends UiPart<Region> {
 
     void fillInnerParts() {
         // @@author A0114523U
-        overdueTaskListPanel = new TaskListPanel(getOverdueTaskListPlaceholder(), logic.getFilteredOverdueTaskList());
+//        overdueTaskListPanel = new TaskListPanel(getOverdueTaskListPlaceholder(), logic.getFilteredOverdueTaskList());
         todayTaskListPanel = new TaskListPanel(getTodayTaskListPlaceholder(), logic.getFilteredTodayTaskList());
         // @@author
 

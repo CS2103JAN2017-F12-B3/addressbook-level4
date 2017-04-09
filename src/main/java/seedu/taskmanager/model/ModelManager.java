@@ -3,6 +3,8 @@ package seedu.taskmanager.model;
 import static seedu.taskmanager.ui.MainWindow.TAB_DONE;
 import static seedu.taskmanager.ui.MainWindow.TAB_TO_DO;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -43,8 +45,10 @@ public class ModelManager extends ComponentManager implements Model {
     // @@author
 
     // @@author A0114523U
-    private final FilteredList<ReadOnlyTask> filteredOverdueTasks;
+    //private final FilteredList<ReadOnlyTask> filteredOverdueTasks;
     private final FilteredList<ReadOnlyTask> filteredTodayTasks;
+    private static final SimpleDateFormat sdfInput = new SimpleDateFormat("dd/MM/yyyy");
+    private static Date today = new Date();
     // @@author
 
     /**
@@ -60,14 +64,21 @@ public class ModelManager extends ComponentManager implements Model {
         filteredTasks = new FilteredList<>(this.taskManager.getTaskList());
 
         // @@author A0114523U
-        filteredOverdueTasks = new FilteredList<>(this.taskManager.getOverdueTaskList());
-        filteredTodayTasks = new FilteredList<>(this.taskManager.getTodayTaskList());
+        //filteredOverdueTasks = new FilteredList<>(this.taskManager.getOverdueTaskList(today));
+        filteredTodayTasks = new FilteredList<>(this.taskManager.getTodayTaskList(today));
         // @@author
 
         // @@author A0131278H
         filteredToDoTasks = new FilteredList<>(this.taskManager.getToDoTaskList());
         filteredDoneTasks = new FilteredList<>(this.taskManager.getDoneTaskList());
         setSelectedTab(TAB_TO_DO); // default tab is to-do task list tab
+        // @@author A0114523U
+        try {
+			today = new Date(sdfInput.parse("today").getTime());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+        
         // @@author
     }
 
@@ -160,11 +171,12 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     // @@author A0114523U
-    public UnmodifiableObservableList<ReadOnlyTask> getFilteredOverdueTaskList() {
-        return new UnmodifiableObservableList<>(filteredOverdueTasks);
-    }
+//    public UnmodifiableObservableList<ReadOnlyTask> getFilteredOverdueTaskList() {
+//        return new UnmodifiableObservableList<>(filteredOverdueTasks);
+//    }
 
     public UnmodifiableObservableList<ReadOnlyTask> getFilteredTodayTaskList() {
+    	updateFilteredTaskList(today);
         return new UnmodifiableObservableList<>(filteredTodayTasks);
     }
     // @@author
@@ -200,7 +212,7 @@ public class ModelManager extends ComponentManager implements Model {
         filteredToDoTasks.setPredicate(null);
         filteredDoneTasks.setPredicate(null);
         filteredTodayTasks.setPredicate(null);
-        filteredOverdueTasks.setPredicate(null);
+        //filteredOverdueTasks.setPredicate(null);
     }
     // @@author
 
@@ -213,7 +225,6 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void updateFilteredTaskList(Date date) {
         updateFilteredTaskList(new PredicateExpression(new DateQualifier(date)));
-
     }
 
     @Override
@@ -229,7 +240,7 @@ public class ModelManager extends ComponentManager implements Model {
         filteredToDoTasks.setPredicate(expression::satisfies);
         filteredDoneTasks.setPredicate(expression::satisfies);
         filteredTodayTasks.setPredicate(expression::satisfies);
-        filteredOverdueTasks.setPredicate(expression::satisfies);
+        //filteredOverdueTasks.setPredicate(expression::satisfies);
     }
     // @@author
 
