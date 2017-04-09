@@ -245,6 +245,24 @@ and logging destinations.
 Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file
 (default: `config.json`):
 
+#### 3.3 Design Decisions
+
+Author: All
+
+In this section, our team discusses the design patterns implemented or that can be implemented for further improvements.
+
+##### 3.3.1 HistoryManager
+
+HistoryManager implements a Singleton design. Listening to TaskManagerChangedEvent, it stores all instances of taskmanagers, command texts which modify storage and highlighted indices. We used two ArrayLists, history and future, to implement undo and redo features respectively.
+
+##### 3.3.2 Save & Load Feature
+
+Save and Load features employ the storage manager class to read and save Funtasktic storage files. We implemented these two features with the following steps. First we modify the storage file path in the the current Funtasktic and config file for future instances. Afterwards, we load the current xml file for load command followed by saving. Save command immediately saves the current state of Funtasktic to the specified new location.
+
+##### 3.3.3 Repeating Tasks
+
+We implemented the repeating tasks by storing the repeat pattern as an Enum in Task. When the user marks a repeating task as done, a clone of it is created without the repeat pattern and marked as done. The original task advances the start date according to its repeat pattern. In the case where the start date exceeds the end date, the repeating task will be deleted.
+
 
 ## 4. Testing
 

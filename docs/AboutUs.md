@@ -35,7 +35,6 @@ We are a team based in the [School of Computing, National University of Singapor
 * Features implemented:
    * [Sort](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/docs/UserGuide.md#143-sorting-tasks--sort)
    * [List](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/docs/UserGuide.md#62-listing-tasks--list)
-   * [Tests](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/docs/UserGuide.md#28-Tests)
 * Code written: [[functional code](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/collated/main/A0131278H.md)][[test code](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/collated/test/A0131278H.md)]
 * Other major contributions:
   * Did the initial refactoring from AddressBook to TaskManager
@@ -66,7 +65,6 @@ We are a team based in the [School of Computing, National University of Singapor
    * [Save Directory](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/docs/UserGuide.md#213-save-the-task-manager-to-a-specified-directory-save-or--saveas)
    * [Mark as Done](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/docs/UserGuide.md#250-marking-a-task-as-done--done-or-complete-or-finish)
    * [Mark as Todo](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/docs/UserGuide.md#268-marking-a-task-as-todo--undone-or-revert)
-   * [Tests](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/docs/UserGuide.md#28-Tests)
 * Code written: [[functional code](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/collated/main/A0114269E.md)][[test code](https://github.com/CS2103JAN2017-F12-B3/main/blob/master/collated/test/A0114269E.md)]
 * Other major contributions:
   * Managing most documentations
