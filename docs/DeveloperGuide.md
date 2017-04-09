@@ -1,4 +1,4 @@
-# Task Manager - Developer Guide
+# Funtasktic - Developer Guide
 
 By : `[F12-B3]`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Feb 2017`  &nbsp;&nbsp;&nbsp;&nbsp; Licence: `MIT`
 
