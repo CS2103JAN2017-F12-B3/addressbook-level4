@@ -1,4 +1,4 @@
-# Task Manager
+# Funtasktic
 [![Build Status](https://travis-ci.org/CS2103JAN2017-F12-B3/main.svg?branch=master)](https://travis-ci.org/CS2103JAN2017-F12-B3/main.svg?branch=master)
 [![Build status](https://ci.appveyor.com/api/projects/status/rbyj813hukcta12j?svg=true)](https://ci.appveyor.com/project/gabrielsim1993/main)
 [![Coverage Status](https://coveralls.io/repos/github/CS2103JAN2017-F12-B3/main/badge.svg?branch=master)](https://coveralls.io/github/CS2103JAN2017-F12-B3/main?branch=master)
