@@ -90,12 +90,6 @@ public class UniqueTaskList implements Iterable<Task> {
         // @@author
 
         taskToUpdate.resetData(editedTask);
-        // TODO: The code below is just a workaround to notify observers of the
-        // updated task.
-        // The right way is to implement observable properties in the Task
-        // class.
-        // Then, TaskCard should then bind its text labels to those observable
-        // properties.
         internalList.set(index, taskToUpdate);
         // @@author A0131278H
         if (!sortCriterion.equals(KEYWORD_UNDEFINED)) {
@@ -194,7 +188,7 @@ public class UniqueTaskList implements Iterable<Task> {
             return internalList; // return list of all task if status is invalid
         }
     }
-
+    // ========== Inner classes/interfaces used for filtering and comparison
     static class StatusPredicate {
 
         public static Predicate<Task> isDone() {
@@ -240,7 +234,7 @@ public class UniqueTaskList implements Iterable<Task> {
 
     }
     // @@author
-
+    
     class DateComparator implements Comparator<Task> {
         String sortCriterion;
 
