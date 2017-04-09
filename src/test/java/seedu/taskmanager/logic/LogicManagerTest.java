@@ -940,6 +940,7 @@ public class LogicManagerTest {
                 String.format(Messages.MESSAGE_INVALID_XML_FORMAT, SaveAsCommand.MESSAGE_USAGE));
     }
 
+    @Test
     public void execute_save_inaccessibleFilePath() throws Exception {
         assertCommandFailure("save /empty.xml", SaveAsCommand.MESSAGE_ERROR_IO);
     }
