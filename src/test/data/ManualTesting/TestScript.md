@@ -23,7 +23,7 @@
 | 2 | add task | add Prepare for maths test e/today | Task with end date is added |
 | 3 | add repeating daily task | add Buy Lunch s/today 12pm r/day | Task that repeats every day is added |
 | 4 | add repeating weekly task | add Buy 4D s/today 4pm e/next month r/week | Task that repeats every week is added |
-| 5 | add repeating monthly task | add Cut hair s/today e/tomorrow r/year | Task that repeats every month is added |
+| 5 | add repeating monthly task | add Cut hair s/today e/tomorrow r/month | Task that repeats every month is added |
 | 6 | add repeating yearly task | add Buy textbooks s/1 december e/2 years from now r/year | Task that repeats every year is added |
 | 7 | add task with description | add Get car keys from dad d/go to changi | Task with description is added |
 | 8 | add task with tag | add Buy airtickets to maldives t/holiday | Task with holiday tag is added |
