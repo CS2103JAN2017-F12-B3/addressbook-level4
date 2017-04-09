@@ -57,8 +57,8 @@ public class XmlAdaptedTask {
     public XmlAdaptedTask(ReadOnlyTask source) {
         title = source.getTitle().value;
         // @@author A0140032E
-        startDate = source.getStartDate().isPresent() ? source.getStartDate().get().toFullDateString() : null;
-        endDate = source.getEndDate().isPresent() ? source.getEndDate().get().toFullDateString() : null;
+        startDate = source.getStartDate().isPresent() ? source.getStartDate().get().toStorageString() : null;
+        endDate = source.getEndDate().isPresent() ? source.getEndDate().get().toStorageString() : null;
         description = source.getDescription().isPresent() ? source.getDescription().get().value : null;
         repeat = source.getRepeat().isPresent() ? source.getRepeat().get().toString() : null;
         // @@author

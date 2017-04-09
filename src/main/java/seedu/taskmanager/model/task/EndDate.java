@@ -28,6 +28,7 @@ public class EndDate extends Date {
     private static final SimpleDateFormat sdfOutput = new SimpleDateFormat("dd/MM/yyyy h:mm a");
     private static final SimpleDateFormat sdfOutputForDateString = new SimpleDateFormat("d MMM yyyy");
     private static final SimpleDateFormat sdfInput = new SimpleDateFormat("dd/MM/yyyy");
+    private static final SimpleDateFormat sdfOutputForStorage = new SimpleDateFormat("d MMM yyyy h:mm a");
     private static boolean timeInferred;
 
     /**
@@ -77,8 +78,8 @@ public class EndDate extends Date {
         return sdfOutput.format(this);
     }
 
-    public String toFullDateString() {
-        return super.toString();
+    public String toStorageString() {
+        return sdfOutputForStorage.format(this);
     }
 
     public String toDateString() {
