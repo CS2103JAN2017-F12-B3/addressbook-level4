@@ -316,7 +316,7 @@ Done         | finish INDEX                                                 | fi
 Undone       | undone INDEX                                                 | undone 2
 Undone       | revert INDEX                                                 | revert 2
 Save as      | saveas FILEPATH                                              | saveas newtaskmanager.xml
-Save as      | save FILEPATH                                                | save newtaskmanager.xml
+Save         | save FILEPATH                                                | save newtaskmanager.xml
 Load         | load FILEPATH                                                | load /Users/admin/taskmanager.xml
 Load         | open FILEPATH                                                | open /Users/admin/taskmanager.xml
 Clear        | clear
