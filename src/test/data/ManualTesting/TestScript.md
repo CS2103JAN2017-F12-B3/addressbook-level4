@@ -103,6 +103,8 @@
 |1| save current FunTaskTic data to data/subfolder/newdata.xml | save data/subfolder/newdata.xml | Data saved in specified location |
 |2| save current FunTaskTic data to an invalid format | save invalid/newdata | Error message will be shown |
 |3| save current FunTaskTic data to an data/subfolder/newdata2.xml using alias command saveas | saveas data/subfolder/newdata2.xml | Data saved in specified location |
+|4|  | add Write FYP paper | a Floating task is added |
+|5| save current FunTaskTic data to data/subfolder/newdata.xml and overwrite the existing xml file | save data/subfolder/newdata.xml | Data saved in specified location |
 |Clear|		|		|		|
 || **clear data in FunTaskTic** | clear | list is cleared |
 |Exit|		|		|		|
