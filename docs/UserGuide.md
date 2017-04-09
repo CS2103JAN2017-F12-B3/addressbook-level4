@@ -294,8 +294,7 @@ Add          | add TASK                                                     | ad
 Add          | add TASK s/STARTING DATE                                     | add submit report s/24/03/2017
 Add          | add TASK s/STARTING DATE e/ENDING DATE                       | add submit report s/24/03/207 e/27/03/2017
 Add          | add TASK s/STARTING DATE e/ENDING DATE d/DESCRIPTION         | add submit report s/24/03/207 e/27/03/2017 d/assignment 1
-Add          | add TASK s/STARTING DATE e/ENDING DATE d/DESCRIPTION r/FREQUENCY t/tags   | add submit report s/24/03/207 e/27/03/2017 d/assignment 1 r/ week t/school
-Add          | add TASK s/STARTING DATE e/ENDING DATE d/Description t/tags   | add submit report s/24/03/207 e/27/03/2017 d/assignment 1 t/school
+Add          | add TASK s/STARTING DATE e/ENDING DATE d/Description t/tags  | add submit report s/24/03/207 e/27/03/2017 d/assignment 1 t/school
 List         | list
 List         | list KEYWORD                                                 | list todo
 Select       | select INDEX                                                 | select 3
